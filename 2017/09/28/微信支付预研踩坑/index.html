@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wenyaoxnxy">
-  <title>Archives: 2017/6 | wenyao&#39;s blog</title>
+  <title>微信支付预研踩坑 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wenyao&#39;s blog">
-<meta property="og:url" content="https://github.com/wenyaoxnxy/archives/2017/06/index.html">
+  <meta name="description" content="近半年来工作主要是做支付平台，近期参与了部分微信公众号开发的工作。由于做的是贷款类项目，原来接入的主动还款方式为代扣，目前线上已经遇到了一些问题，需要拓展支付渠道用户客户还款。所以预研了一下微信支付，用于客户主动还款。由于只做了预研，后端并未做设计，只是完成了掉起微信支付界面，并成功付款。具体设计详细步骤如果接入了微信支付再来补充。同时吐槽一句，微信支付的文档真的不咋地!!!(据说部分内容是产品经">
+<meta name="keywords" content="随笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信支付预研踩坑">
+<meta property="og:url" content="https://github.com/wenyaoxnxy/2017/09/28/微信支付预研踩坑/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
+<meta property="og:description" content="近半年来工作主要是做支付平台，近期参与了部分微信公众号开发的工作。由于做的是贷款类项目，原来接入的主动还款方式为代扣，目前线上已经遇到了一些问题，需要拓展支付渠道用户客户还款。所以预研了一下微信支付，用于客户主动还款。由于只做了预研，后端并未做设计，只是完成了掉起微信支付界面，并成功付款。具体设计详细步骤如果接入了微信支付再来补充。同时吐槽一句，微信支付的文档真的不咋地!!!(据说部分内容是产品经">
+<meta property="og:image" content="https://pay.weixin.qq.com/wiki/doc/api/img/chapter7_4_1.png">
+<meta property="og:updated_time" content="2017-09-28T14:28:10.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wenyao&#39;s blog">
+<meta name="twitter:title" content="微信支付预研踩坑">
+<meta name="twitter:description" content="近半年来工作主要是做支付平台，近期参与了部分微信公众号开发的工作。由于做的是贷款类项目，原来接入的主动还款方式为代扣，目前线上已经遇到了一些问题，需要拓展支付渠道用户客户还款。所以预研了一下微信支付，用于客户主动还款。由于只做了预研，后端并未做设计，只是完成了掉起微信支付界面，并成功付款。具体设计详细步骤如果接入了微信支付再来补充。同时吐槽一句，微信支付的文档真的不咋地!!!(据说部分内容是产品经">
+<meta name="twitter:image" content="https://pay.weixin.qq.com/wiki/doc/api/img/chapter7_4_1.png">
   
     <link rel="alternative" href="/atom.xml" title="wenyao&#39;s blog" type="application/atom+xml">
   
@@ -165,36 +172,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-微信支付预研踩坑" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/19/wenyao's自留地/" class="archive-article-date">
-  	<time datetime="2017-06-19T08:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/19/wenyao's自留地/">wenyao&#39;s自留地</a>
+    <h1 class="article-title" itemprop="name">
+      微信支付预研踩坑
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/28/微信支付预研踩坑/" class="archive-article-date">
+  	<time datetime="2017-09-28T14:27:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近半年来工作主要是做支付平台，近期参与了部分微信公众号开发的工作。<br>由于做的是贷款类项目，原来接入的主动还款方式为代扣，目前线上已经遇到了一些问题，需要拓展支付渠道用户客户还款。所以预研了一下微信支付，用于客户主动还款。<br>由于只做了预研，后端并未做设计，只是完成了掉起微信支付界面，并成功付款。具体设计详细步骤如果接入了微信支付再来补充。<br>同时吐槽一句，微信支付的文档真的不咋地!!!(据说部分内容是产品经理写的→_→)</p>
+<p>调起微信支付主要包括三个步骤</p>
+<ol>
+<li>调用统一下单接口生成请求==预支付交易会话标识==</li>
+<li>请求参数MD5签名（可能是自己接触OpenAPI太少，没看懂文档里面有这个步骤）</li>
+<li>调用微信jssdk支付方法，唤起微信支付框</li>
+</ol>
+<p>开发前需要搭建好微信支付开发环境.<br>相信需要接入微信支付，微信公众平台的开发环境已经准备好。<br>微信开发需要在商户中按照<a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_3" target="_blank" rel="external">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_3</a>进行配置<br>同时自己需有商户信息  </p>
+<blockquote>
+<p>商户号：<strong><strong><br>秘钥：**</strong></strong></p>
+</blockquote>
+<p>微信公众号信息 </p>
+<blockquote>
+<pre><code>AppID(应用ID):****  
+AppSecret(应用密钥):******
+</code></pre></blockquote>
+<p>下载微信提供的java <a href="https://pay.weixin.qq.com/wiki/doc/api/download/WxPayAPI_JAVA_v3.zip" target="_blank" rel="external">版本DEMO</a><br>java版本demo内容还是比较齐全，基本整合入工程就可以使用。如果项目中使用spring的话，需稍作加工 </p>
+<p>详细介绍下这三个步骤，及注意事项</p>
+<ol>
+<li>调用统一下单<br>采用服务端直接调用http请求至微信服务器，获取 prepay_id<br>java代码如下</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Autowired</div><div class="line">private WeChatPayService weChatPayService;</div><div class="line"></div><div class="line">Map&lt;String, String&gt; payMap = new HashMap&lt;&gt;();</div><div class="line">String randomStr = WXPayUtil.generateNonceStr();</div><div class="line">try &#123;</div><div class="line">    payMap = weChatPayService.unifiedorder(randomStr);</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">    log.error(&quot;&#123;&#125;&quot;, e);</div><div class="line">&#125;</div><div class="line">log.info(&quot;&#123;&#125;&quot;, payMap);</div></pre></td></tr></table></figure>
+<p>项目中使用了使用了spring，所以方法需要在spring中进行注册<br>WeChatPayService 如下<br>基本也是从Demo中拷贝出来，然后加入自己的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">@Component</div><div class="line">public class WeChatPayService &#123;</div><div class="line"></div><div class="line">    public Map&lt;String, String&gt; unifiedorder(String randomStr) throws Exception &#123;</div><div class="line"></div><div class="line">        // HostnameVerifier hnv = new HostnameVerifier() &#123;</div><div class="line">        // public boolean verify(String hostname, SSLSession session) &#123;</div><div class="line">        // // Always return true，接受任意域名服务器</div><div class="line">        // return true;</div><div class="line">        // &#125;</div><div class="line">        // &#125;;</div><div class="line">        // HttpsURLConnection.setDefaultHostnameVerifier(hnv);</div><div class="line"></div><div class="line">        HashMap&lt;String, String&gt; data = new HashMap&lt;String, String&gt;();</div><div class="line">        data.put(&quot;body&quot;, &quot;测试商家-商品类目&quot;);</div><div class="line">        data.put(&quot;trade_type&quot;, &quot;JSAPI&quot;);//公众号内支付必须选择</div><div class="line">        data.put(&quot;mch_id&quot;, &quot;1394437***&quot;);//脱敏</div><div class="line">        data.put(&quot;sign_type&quot;, &quot;MD5&quot;);</div><div class="line">        data.put(&quot;nonce_str&quot;, randomStr);//传入，后续签名也要使用，但是应该可以使用不同的值</div><div class="line">        data.put(&quot;fee_type&quot;, &quot;CNY&quot;);</div><div class="line">        data.put(&quot;device_info&quot;, &quot;WEB&quot;);</div><div class="line">        data.put(&quot;out_trade_no&quot;, &quot;2017190910595&quot; + System.currentTimeMillis());</div><div class="line"></div><div class="line">        data.put(&quot;openid&quot;, &quot;oPNSTwo7f0Bk0-21F2KXNOdwV***&quot;);//需要传入待支付用户的openid，Demo直接写死</div><div class="line">        data.put(&quot;total_fee&quot;, &quot;1000&quot;);//金额单位为分</div><div class="line">        data.put(&quot;appid&quot;, &quot;wxcb207fb7c8f9dd**&quot;);</div><div class="line">        data.put(&quot;notify_url&quot;, &quot;http://test.letiantian.com/wxpay/notify&quot;);</div><div class="line">        data.put(&quot;spbill_create_ip&quot;, &quot;123.12.12.123&quot;);</div><div class="line"></div><div class="line">        String UTF8 = &quot;UTF-8&quot;;</div><div class="line">        System.out.println(data);</div><div class="line">        String sign = WXPayUtil.generateSignature(data, &quot;******&quot;, SignType.MD5);//传入商户密钥</div><div class="line">        data.put(&quot;sign&quot;, sign);</div><div class="line">        String reqBody = WXPayUtil.mapToXml(data);</div><div class="line">        URL httpUrl = new URL(&quot;https://api.mch.weixin.qq.com/pay/unifiedorder&quot;);</div><div class="line">        HttpURLConnection httpURLConnection = (HttpURLConnection) httpUrl.openConnection();</div><div class="line">        httpURLConnection.setRequestProperty(&quot;Host&quot;, &quot;api.mch.weixin.qq.com&quot;);</div><div class="line">        httpURLConnection.setDoOutput(true);</div><div class="line">        httpURLConnection.setRequestMethod(&quot;POST&quot;);</div><div class="line">        httpURLConnection.setConnectTimeout(10 * 1000);</div><div class="line">        httpURLConnection.setReadTimeout(10 * 1000);</div><div class="line">        httpURLConnection.connect();</div><div class="line">        OutputStream outputStream = httpURLConnection.getOutputStream();</div><div class="line">        outputStream.write(reqBody.getBytes(UTF8));</div><div class="line"></div><div class="line">        // 获取内容</div><div class="line">        InputStream inputStream = httpURLConnection.getInputStream();</div><div class="line">        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, UTF8));</div><div class="line">        final StringBuffer stringBuffer = new StringBuffer();</div><div class="line">        String line = null;</div><div class="line">        while ((line = bufferedReader.readLine()) != null) &#123;</div><div class="line">            stringBuffer.append(line);</div><div class="line">        &#125;</div><div class="line">        String resp = stringBuffer.toString();</div><div class="line">        if (stringBuffer != null) &#123;</div><div class="line">            try &#123;</div><div class="line">                bufferedReader.close();</div><div class="line">            &#125; catch (IOException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (inputStream != null) &#123;</div><div class="line">            try &#123;</div><div class="line">                inputStream.close();</div><div class="line">            &#125; catch (IOException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (outputStream != null) &#123;</div><div class="line">            try &#123;</div><div class="line">                outputStream.close();</div><div class="line">            &#125; catch (IOException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return WXPayUtil.xmlToMap(resp);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>请求参数MD5签名<br>这个步骤在微信支付流程文档中的第6步，只是简单写了一句生成JSAPI页面调用的支付参数并签名，这个步骤很容易被忽略<br><html><br><img src="https://pay.weixin.qq.com/wiki/doc/api/img/chapter7_4_1.png"><br></html><br>签名代码如下，主要还是使用DEMO中的WXPayUtil进行签名，WXPayUtil已经对数据参数进行排序，并计算，同时还支持shadow</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// appId, timeStamp, nonceStr, package, signType</div><div class="line">timestamp = String.valueOf(System.currentTimeMillis() / 1000);</div><div class="line">nonceStr = randomStr;</div><div class="line">prepayId = payMap.get(&quot;prepay_id&quot;);</div><div class="line"></div><div class="line">HashMap&lt;String, String&gt; data = new HashMap&lt;String, String&gt;();</div><div class="line">data.put(&quot;appId&quot;, &quot;****&quot;);</div><div class="line">data.put(&quot;timeStamp&quot;, timestamp);</div><div class="line">data.put(&quot;nonceStr&quot;, randomStr);</div><div class="line">data.put(&quot;package&quot;, &quot;prepay_id=&quot; + prepayId);</div><div class="line">data.put(&quot;signType&quot;, &quot;MD5&quot;);</div><div class="line">String sign = &quot;&quot;;</div><div class="line">try &#123;</div><div class="line">    sign = WXPayUtil.generateSignature(data, &quot;****&quot;, SignType.MD5);</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">    e.printStackTrace();</div><div class="line">&#125;</div><div class="line">log.info(&quot;&#123;&#125;&quot;, sign);</div></pre></td></tr></table></figure>
+<ol>
+<li>调用微信jssdk支付方法，唤起微信支付框<br>调用提供的jssdk方法在进入页面后直接唤起微信支付框，如果没有第2个步骤，直接将第一步得到的加密串传入jssdk中将会报错“签名错误”</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">	  </div><div class="line">function onBridgeReady()&#123;</div><div class="line">   console.log(&quot;wechat pay&quot;);</div><div class="line">   WeixinJSBridge.invoke(</div><div class="line">       &apos;getBrandWCPayRequest&apos;, &#123;</div><div class="line">           &quot;appId&quot;:&quot;*****&quot;,     //公众号名称，由商户传入     </div><div class="line">           &quot;timeStamp&quot;:&quot;$&#123;timestamp!&#125;&quot;,         //时间戳，自1970年以来的秒数     </div><div class="line">           &quot;nonceStr&quot;:&quot;$&#123;nonceStr!&#125;&quot;, //随机串     </div><div class="line">           &quot;package&quot;:&quot;prepay_id=$&#123;prepayId!&#125;&quot;,     </div><div class="line">           &quot;signType&quot;:&quot;MD5&quot;,         //微信签名方式：     </div><div class="line">           &quot;paySign&quot;:&quot;$&#123;paySign!&#125;&quot; //微信签名 </div><div class="line">       &#125;,</div><div class="line">       function(res)&#123;     </div><div class="line">           if(res.err_msg == &quot;get_brand_wcpay_request:ok&quot; ) &#123;</div><div class="line">           	alert(&quot;调用微信支付成功&quot;);</div><div class="line">           &#125;     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。 </div><div class="line">       &#125;</div><div class="line">   ); </div><div class="line">&#125;</div><div class="line">if (typeof WeixinJSBridge == &quot;undefined&quot;)&#123;</div><div class="line">   if( document.addEventListener )&#123;</div><div class="line">       document.addEventListener(&apos;WeixinJSBridgeReady&apos;, onBridgeReady, false);</div><div class="line">   &#125;else if (document.attachEvent)&#123;</div><div class="line">       document.attachEvent(&apos;WeixinJSBridgeReady&apos;, onBridgeReady); </div><div class="line">       document.attachEvent(&apos;onWeixinJSBridgeReady&apos;, onBridgeReady);</div><div class="line">   &#125;</div><div class="line">&#125;else&#123;</div><div class="line">   onBridgeReady();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>进入页面成功唤起微信支付框，支付成功后将执行回调方法中的alert，至此微信支付成功。</p>
+<p>同时，这次只是前台成功唤起了支付的界面，微信支付接入最主要的还是后端支付平台的设计。主要有以下几个点需要注意</p>
+<ol>
+<li>微信支付DEMO与框架的整合，使用spring时候需要注意原来Service修改为多实例  @Scope(BeanDefinition.SCOPE_PROTOTYPE)<br>@Component</li>
+<li>微信支付的成功不能以前台通知为准，一定要在以微信推送的后台通知为准，放可进入账务系统进行入账。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -206,19 +249,55 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/22/ES6-入门-Set和Map数据结构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">简单入门-Set和Map数据结构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -241,8 +320,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
