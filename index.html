@@ -167,6 +167,166 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-activiti-modeler-自定义节点属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/06/activiti-modeler-自定义节点属性/">activiti modeler 自定义节点属性</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/06/activiti-modeler-自定义节点属性/" class="archive-article-date">
+  	<time datetime="2018-01-06T02:37:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="activiti-modeler-自定义节点属性"><a href="#activiti-modeler-自定义节点属性" class="headerlink" title="activiti modeler 自定义节点属性"></a>activiti modeler 自定义节点属性</h1><p>最近在弄activiti modeler ，由于项目需求，需要设置个性化的属性，现将modeler上面的修改记录下来，只使用与前端的修改，后端servlet改造后续补上吧（相比前台的修改后台改动还是挺简单的）,如果有坑友同样需要自定义节点属性，希望能节省你的时间。<br>工程的模板基本上是咖啡兔的kft-activiti-demo，只是拿了合适的部分使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">（待完善）</div><div class="line">1、三个文件的修改（URL的修改）</div><div class="line">主要是拼接返回的数据</div></pre></td></tr></table></figure>
+<h2 id="现有节点中增加activit-modeler中自定义属性"><a href="#现有节点中增加activit-modeler中自定义属性" class="headerlink" title="现有节点中增加activit modeler中自定义属性"></a>现有节点中增加activit modeler中自定义属性</h2><p>操作步骤  </p>
+<h3 id="1-在stencilset-json文件中增加自己的property属性"><a href="#1-在stencilset-json文件中增加自己的property属性" class="headerlink" title="1.在stencilset.json文件中增加自己的property属性"></a>1.在stencilset.json文件中增加自己的property属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> &quot;name&quot; : &quot;testproperties&quot;,</div><div class="line"> &quot;properties&quot; : [ &#123;</div><div class="line">   &quot;id&quot; : &quot;testpropertiesid&quot;,</div><div class="line">   &quot;type&quot; : &quot;String&quot;,</div><div class="line">   &quot;title&quot; : &quot;测试节点&quot;,</div><div class="line">   &quot;value&quot; : &quot;测试节点的值&quot;,</div><div class="line">   &quot;description&quot; : &quot;测试节点在配置区的显示&quot;,</div><div class="line">   &quot;popular&quot; : true</div><div class="line"> &#125; ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意选取合适的type属性，type属性在properties.js文件中进行定义。</p>
+<h3 id="2-如果需要新增type，在properties-js文件中加入自定义的type对应的定义"><a href="#2-如果需要新增type，在properties-js文件中加入自定义的type对应的定义" class="headerlink" title="2.如果需要新增type，在properties.js文件中加入自定义的type对应的定义"></a>2.如果需要新增type，在properties.js文件中加入自定义的type对应的定义</h3><h5 id="stencilset-json片段"><a href="#stencilset-json片段" class="headerlink" title="stencilset.json片段"></a>stencilset.json片段</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot; : &quot;multiinstance_typepackage&quot;,</div><div class="line">    &quot;properties&quot; : [ &#123;</div><div class="line">      &quot;id&quot; : &quot;multiinstance_selet&quot;,</div><div class="line">      &quot;type&quot; : &quot;kisbpm-multiinstance-select&quot;,</div><div class="line">      &quot;title&quot; : &quot;测试下拉&quot;,</div><div class="line">      &quot;value&quot; : &quot;no&quot;,</div><div class="line">      &quot;options&quot; : &quot;&quot;,</div><div class="line">      &quot;description&quot; : &quot;测试下拉的值进行展示&quot;,</div><div class="line">      &quot;popular&quot; : true,</div><div class="line">      &quot;refToView&quot; : &quot;multiinstance&quot;</div><div class="line">    &#125; ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h5 id="properties-js片段"><a href="#properties-js片段" class="headerlink" title="properties.js片段"></a>properties.js片段</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;kisbpm-multiinstance-select&quot; : &#123;</div><div class="line">        &quot;readModeTemplateUrl&quot;: &quot;editor-app/configuration/properties/default-value-display-template.html&quot;,</div><div class="line">        &quot;writeModeTemplateUrl&quot;: &quot;editor-app/configuration/properties/multiinstance-property-select-write-template.html&quot;</div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
+<h3 id="3-增加type对应的html和js"><a href="#3-增加type对应的html和js" class="headerlink" title="3.增加type对应的html和js"></a>3.增加type对应的html和js</h3><h5 id="multiinstance-property-select-write-template-html"><a href="#multiinstance-property-select-write-template-html" class="headerlink" title="multiinstance-property-select-write-template.html"></a>multiinstance-property-select-write-template.html</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-controller=&quot;KisBpmMultiInstanceSelectCtrl&quot;&gt;</div><div class="line">    &lt;select ng-model=&quot;property.value&quot; ng-change=&quot;multiInstanceSelectChanged()&quot;&gt;</div><div class="line">    	&lt;option ng-repeat=&quot;x in property.options track by $index&quot;  value=&quot;&#123;&#123;x.value&#125;&#125;&quot; &gt;&#123;&#123;x.name&#125;&#125;&lt;/option&gt;</div><div class="line">    &lt;/select&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h5 id="properties-multiinstance-select-controller-js"><a href="#properties-multiinstance-select-controller-js" class="headerlink" title="properties-multiinstance-select-controller.js"></a>properties-multiinstance-select-controller.js</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var KisBpmMultiInstanceSelectCtrl = [ &apos;$scope&apos;, function($scope) &#123;</div><div class="line">	</div><div class="line">	console.log(&apos;request url:&apos;+KISBPM.URL.getSelect());</div><div class="line">	new Ajax.Request(KISBPM.URL.getSelect(), &#123;</div><div class="line">		asynchronous: false,</div><div class="line">		method: &apos;get&apos;,</div><div class="line">		onSuccess: function(result)&#123;</div><div class="line">			$scope.property.options = JSON.parse(result.responseText);</div><div class="line">		&#125;,</div><div class="line">		onFailure: function()&#123;</div><div class="line">			console.log(&quot;get select value error&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">	</div><div class="line">    if ($scope.property.value == undefined &amp;&amp; $scope.property.value == null)</div><div class="line">    &#123;</div><div class="line">    	console.log(&apos;$scope.property value is null &apos;);</div><div class="line">    	$scope.property.value = &apos;no&apos;;</div><div class="line">    &#125;</div><div class="line">        </div><div class="line">    $scope.multiInstanceSelectChanged = function() &#123;</div><div class="line">    	console.log(&apos;$scope.property multiInstanceSelectChanged :&apos;+$scope.property);</div><div class="line">    	$scope.updatePropertyInModel($scope.property);</div><div class="line">    &#125;;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>将js加入modeler.html中</p>
+<h3 id="4-如果需要从后台获取数据在url-config-js配置对应url"><a href="#4-如果需要从后台获取数据在url-config-js配置对应url" class="headerlink" title="4.如果需要从后台获取数据在url-config.js配置对应url"></a>4.如果需要从后台获取数据在url-config.js配置对应url</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">getSelect: function()&#123;</div><div class="line">	 return ACTIVITI.CONFIG.contextRoot + &apos;/model?type=querySelect&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体使用见上面的js模板，后端servlet返回json数据</p>
+<h3 id="5-如果预设属性不够，可以自定义属性。"><a href="#5-如果预设属性不够，可以自定义属性。" class="headerlink" title="5.如果预设属性不够，可以自定义属性。"></a>5.如果预设属性不够，可以自定义属性。</h3><p>自定义步骤：已stencilset.json中自定义的multiinstance_selet举例，自定义了一个options属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot; : &quot;multiinstance_typepackage&quot;,</div><div class="line">    &quot;properties&quot; : [ &#123;</div><div class="line">      &quot;id&quot; : &quot;multiinstance_selet&quot;,</div><div class="line">      &quot;type&quot; : &quot;kisbpm-multiinstance-select&quot;,</div><div class="line">      &quot;title&quot; : &quot;测试下拉&quot;,</div><div class="line">      &quot;value&quot; : &quot;no&quot;,</div><div class="line">      &quot;options&quot; : &quot;&quot;,</div><div class="line">      &quot;description&quot; : &quot;测试下拉的值进行展示&quot;,</div><div class="line">      &quot;popular&quot; : true,</div><div class="line">      &quot;refToView&quot; : &quot;multiinstance&quot;</div><div class="line">    &#125; ]</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>在stencil-controller.js文件第300行加入你的新增属性，并可赋默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var currentProperty = &#123;</div><div class="line">	&apos;key&apos;: key,</div><div class="line">	&apos;title&apos;: property.title(),</div><div class="line">	&apos;type&apos;: property.type(),</div><div class="line">	&apos;mode&apos;: &apos;read&apos;,</div><div class="line">	&apos;hidden&apos;: property.isHidden(),</div><div class="line">	&apos;value&apos;: selectedShape.properties[key],</div><div class="line">	&apos;options&apos;:&apos;&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在oryx.debug.js中添加对自定义type的支持<br>oryx.debug.js 1918行加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ORYX.CONFIG.TYPE_KISBPM_MULTIINSTANCE_SELECT =	&quot;kisbpm-multiinstance-select&quot;;</div></pre></td></tr></table></figure>
+<p>oryx.debug.js 12942行加入 新增type对应的处理方式，此处应该为页面初始化时候在指定的properties中如何展示值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">else if (property.type() === ORYX.CONFIG.TYPE_KISBPM_MULTIINSTANCE_SELECT)</div><div class="line">&#123;</div><div class="line">	if (ref === &quot;multiinstance&quot;) &#123;</div><div class="line">		</div><div class="line">		var svgElemParallel = this.node.ownerDocument.getElementById(this.id + &apos;parallel&apos;);</div><div class="line">		if(svgElemParallel) </div><div class="line">		&#123;</div><div class="line">			if (prop === &apos;Parallel&apos;)</div><div class="line">			&#123;</div><div class="line">				svgElemParallel.setAttributeNS(null, &apos;display&apos;, &apos;inherit&apos;);</div><div class="line">			&#125;</div><div class="line">			else</div><div class="line">			&#123;</div><div class="line">				svgElemParallel.setAttributeNS(null, &apos;display&apos;, &apos;none&apos;);</div><div class="line">			&#125;</div><div class="line">		&#125; </div><div class="line">		</div><div class="line">		var svgElemSequential = this.node.ownerDocument.getElementById(this.id + &apos;sequential&apos;);</div><div class="line">		</div><div class="line">		if(svgElemSequential) </div><div class="line">		&#123;</div><div class="line">			if (prop === &apos;Sequential&apos;)</div><div class="line">			&#123;</div><div class="line">				svgElemSequential.setAttributeNS(null, &apos;display&apos;, &apos;inherit&apos;);</div><div class="line">			&#125;</div><div class="line">			else</div><div class="line">			&#123;</div><div class="line">				svgElemSequential.setAttributeNS(null, &apos;display&apos;, &apos;none&apos;);</div><div class="line">			&#125;</div><div class="line">		&#125; </div><div class="line">	&#125;</div><div class="line">	return;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果节点需要初始化rootscop数据，在app.js中初始化<br>app.js 111行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/*初始化rootScope节点*/</div><div class="line">    for(var i = 0;i&lt;$rootScope.modelData.model.childShapes.length;i++)&#123;</div><div class="line">    	if($rootScope.modelData.model.childShapes[i].stencil.id == &apos;StartNoneEvent&apos;)&#123;</div><div class="line">    		 $rootScope.selectedFormID = $rootScope.modelData.model.childShapes[i].properties.formkeydefinition;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="备注："><a href="#备注：" class="headerlink" title="备注："></a>备注：</h4><p>将返回的xml文件转换成json后，已经无法使用下面进行转换的对象进行操作，因为自定义的属性无法获取，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">BpmnJsonConverter jsonConverter = new BpmnJsonConverter();</div><div class="line">JsonNode editorNode = new ObjectMapper().readTree(requestMap.get(</div><div class="line">		&quot;json_xml&quot;).getBytes(&quot;utf-8&quot;));</div><div class="line">BpmnModel bpmnModel = jsonConverter.convertToBpmnModel(editorNode);</div></pre></td></tr></table></figure>
+<p>使用jackson进行解析其实操作更方便，只是需要自己逐级解析了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">activiti</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/06/activiti-modeler-自定义节点属性/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web应用常见安全漏洞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/09/web应用常见安全漏洞/">web应用常见安全漏洞</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/09/web应用常见安全漏洞/" class="archive-article-date">
+  	<time datetime="2017-10-09T02:38:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/09/web应用常见安全漏洞/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-网银基础业务及系统架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1112,7 +1272,7 @@ AppSecret(应用密钥):******
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 文耀
+    		&copy; 2018 文耀
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1199,11 +1359,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">activiti</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
