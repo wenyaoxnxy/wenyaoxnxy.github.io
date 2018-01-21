@@ -167,6 +167,110 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-XML随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/21/XML随笔/">XML随笔</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/21/XML随笔/" class="archive-article-date">
+  	<time datetime="2018-01-21T13:21:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近项目上在弄xml的解析，遇到了一些坑，就记录下来</p>
+<h1 id="xml解析规则"><a href="#xml解析规则" class="headerlink" title="xml解析规则"></a>xml解析规则</h1><p>在JAXB标准中，对象上面的注解都是统一的，不管使用什么方式（工具）进行解析<br>项目中使用的是JAXBProcessor 进行解析  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">JAXBProcessor jaxbPro = new JAXBProcessor();</div><div class="line">ProcessInfoPojo processInfoPojo = new ProcessInfoPojo();</div><div class="line">processInfoPojo = (ProcessInfoPojo) jaxbPro.unMarshal(processInfoPojo, sb.toString());</div></pre></td></tr></table></figure>
+<p>主要是注解的使用，比较关键的一个注解为@XmlElementWrapper，如果需要包裹就需要选用此注解，具体使用方法可以参考下图<br><img src="http://wenyaoxnxy.github.io/img/xmlAnnotation.png" alt="image"></p>
+<h1 id="xml的BOM"><a href="#xml的BOM" class="headerlink" title="xml的BOM"></a>xml的BOM</h1><p>后端解析xml的时候有一个坑，xml的BOM<br>如果你在进行解析时候一直提示错误  </p>
+<blockquote>
+<p> Content is not allowed in prolog. Nested exception: Content is not allowed in prolog.</p>
+</blockquote>
+<p>检查xml发现没有任何问题，这个时候就要考虑是不是xml的BOM导致的。<br> BOM：Byte Order Mark，中文名字节顺序标记。UCS规范建议在传输字节流前，先传输BOM来判断字节顺序。<br> 其实UTF-8是不需要用BOM来表明字节顺序的，但是可以用BOM来表明编码方式。BOM的UTF-8编码是EF BB BF，所以呢，如果接受者收到EF BB BF开头的字节流，就说明它是UTF-8编码了。</p>
+<p>由此可见，对于UTF-8来说，BOM是可有可无的，可是，有的XML解析方式不认这个BOM，所以就报错了。</p>
+<p>xml解析规则：翻文档发现<br>  W3C定义了三条XML解析器如何正确读取XML文件的编码的规则：  </p>
+<blockquote>
+<p> 1，如果文挡有BOM(字节顺序标记，一般来说，如果保存为unicode格式，则包含BOM，ANSI则无)，就定义了文件编码<br> 2，如果没有BOM，就查看XML声明的编码属性<br> 3，如果上述两个都没有，就假定XML文挡采用UTF-8编码</p>
+</blockquote>
+<p><strong> 如何解决</strong></p>
+<h3 id="1、写入"><a href="#1、写入" class="headerlink" title="1、写入"></a>1、写入</h3><p> 之前生成XML的代码是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">XmlWriterSettings settings = new XmlWriterSettings();</div><div class="line">settings.Encoding = System.Text.Encoding.GetEncoding(&quot;utf-8&quot;);</div><div class="line">XmlWriter writer = XmlWriter.Create(pathName, settings);</div></pre></td></tr></table></figure>
+<p>修改之后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">XmlWriterSettings settings = new XmlWriterSettings();</div><div class="line">settings.Encoding = new UTF8Encoding(false);</div><div class="line">XmlWriter writer = XmlWriter.Create(pathName, settings);</div></pre></td></tr></table></figure>
+<p>这样用XmlWriter生成的XML就是不带BOM的了  </p>
+<p>同样，使用servlet下载的文件是不带BOM的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">String fileName = URLEncoder.encode(results.get(&quot;fileName&quot;), &quot;UTF-8&quot;) + &quot;.xml&quot;;</div><div class="line">// 下载必须设置头</div><div class="line">response.setHeader(&quot;content-disposition&quot;,&quot;attachment;filename=&quot; + fileName);</div><div class="line">response.setContentType(&quot;text/xml;charset=utf-8&quot;);</div><div class="line">// 获得文件</div><div class="line">InputStream is = new ByteArrayInputStream(results.get(&quot;xmlResult&quot;).getBytes());</div><div class="line">// 输出流</div><div class="line">OutputStream os = response.getOutputStream();</div><div class="line">byte[] buffer = new byte[1024];</div><div class="line">int len = -1;</div><div class="line">while ((len = is.read(buffer)) != -1) &#123;</div><div class="line">	os.write(buffer, 0, len);</div><div class="line">&#125;</div><div class="line">os.close();</div><div class="line">is.close();</div></pre></td></tr></table></figure>
+<h3 id="2、读取"><a href="#2、读取" class="headerlink" title="2、读取"></a>2、读取</h3><p> 推荐阅读<br> <a href="http://blog.csdn.net/littleatp2008/article/details/6943215" target="_blank" rel="external">http://blog.csdn.net/littleatp2008/article/details/6943215</a><br> 项目中使用的是第二种解决方式。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//文件有两种情况，一种带有BOM的xml和不带BOMxml，直接读取只能转换不带BOM的xml，下面方法两种方式都可以兼容</div><div class="line">File xmlFile = new File(&quot;D:\\exporttest.xml&quot;);</div><div class="line">FileInputStream fis = new FileInputStream(xmlFile);</div><div class="line">UnicodeReader ur = new UnicodeReader(fis, &quot;utf-8&quot;);  </div><div class="line">BufferedReader br = new BufferedReader(ur); </div><div class="line">StringBuffer sb = new StringBuffer();</div><div class="line">String line = null;  </div><div class="line">while((line = br.readLine()) != null)&#123; </div><div class="line">	sb.append(line);</div><div class="line">&#125;  </div><div class="line">br.close();</div><div class="line"></div><div class="line">JAXBProcessor jaxbPro = new JAXBProcessor();</div><div class="line">ProcessInfoPojo processInfoPojo = new ProcessInfoPojo();</div><div class="line">processInfoPojo = (ProcessInfoPojo) jaxbPro.unMarshal(processInfoPojo, sb.toString());</div></pre></td></tr></table></figure>
+<h1 id="XML-命名空间（XML-Namespaces）"><a href="#XML-命名空间（XML-Namespaces）" class="headerlink" title="XML 命名空间（XML Namespaces）"></a>XML 命名空间（XML Namespaces）</h1><p>W3C对Namespaces 的定义如下<br>XML 命名空间提供避免元素命名冲突的方法。  </p>
+<p>Dom4j解析xml时候需要过滤Namespaces，如下xml中，如果需要获取&lt;activiti:executionListener.. 节点中的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;definitions xmlns=&quot;http://www.omg.org/spec/BPMN/20100524/MODEL&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:activiti=&quot;http://activiti.org/bpmn&quot; xmlns:bpmndi=&quot;http://www.omg.org/spec/BPMN/20100524/DI&quot; xmlns:omgdc=&quot;http://www.omg.org/spec/DD/20100524/DC&quot; xmlns:omgdi=&quot;http://www.omg.org/spec/DD/20100524/DI&quot; typeLanguage=&quot;http://www.w3.org/2001/XMLSchema&quot; expressionLanguage=&quot;http://www.w3.org/1999/XPath&quot; targetNamespace=&quot;http://www.activiti.org/test&quot;&gt;</div><div class="line">	&lt;process id=&quot;P201711301052229770&quot; name=&quot;测试2&quot;&gt;</div><div class="line">		&lt;extensionElements&gt;</div><div class="line">			&lt;activiti:executionListener event=&quot;end&quot; class=&quot;com.yss.uco.workflow.wf.bpm.service.listener.WorkflowExecutionListenerHook&quot;&gt;</div><div class="line">				&lt;activiti:field name=&quot;listenerClassName&quot;&gt;</div><div class="line">					&lt;activiti:string&gt;</div><div class="line">						&lt;![CDATA[com.yss.fast.task.task.workflowlistener.TaskScheduler4WorkflowEndListener(Task)]]&gt;</div><div class="line">					&lt;/activiti:string&gt;</div><div class="line">				&lt;/activiti:field&gt;</div><div class="line">			&lt;/activiti:executionListener&gt;</div><div class="line">		&lt;/extensionElements&gt;</div><div class="line">		...</div></pre></td></tr></table></figure>
+<p>需要忽略namespaces进行解析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Element&gt; executionListenerList = root.element(&quot;extensionElements&quot;).elements(&quot;executionListener&quot;);</div></pre></td></tr></table></figure>
+<p>而不是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Element&gt; executionListenerList = root.element(&quot;extensionElements&quot;).elements(&quot;activiti:executionListener&quot;);</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/21/XML随笔/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-activiti-modeler-自定义节点属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1157,111 +1261,10 @@ AppSecret(应用密钥):******
 
 
   
-    <article id="post-wenyao&#39;s自留地" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/wenyao's自留地/">wenyao&#39;s自留地</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/19/wenyao's自留地/" class="archive-article-date">
-  	<time datetime="2017-06-19T08:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2017计划"><a href="#2017计划" class="headerlink" title="2017计划"></a>2017计划</h1><p>好久没写blog了，2017年开始准备记录生活和工作中的点滴吧，从今天开始写今年的第一篇blog，主要是列举今年上半年的计划。</p>
-<h2 id="下面列举下今年的计划"><a href="#下面列举下今年的计划" class="headerlink" title="下面列举下今年的计划"></a>下面列举下今年的计划</h2><hr>
-<ol>
-<li>熟练掌握VueJs的使用用</li>
-</ol>
-<p>VueJs自己编写一个小DEMO，开发一个完整的仿饿了么前端DEMO，并且放入crodova中，用真机模拟调试。</p>
-<hr>
-<ol>
-<li>熟练掌握微信小程序的开发</li>
-</ol>
-<p>熟悉小程序DEMO，并使用豆瓣API开发出一个仿豆瓣的应用，后期可考虑实现一个稍微复杂应用</p>
-<hr>
-<ol>
-<li>熟练掌握CSS中的流式布局</li>
-</ol>
-<p>考虑在新接手的移动项目中使用流式布局进行适配</p>
-<hr>
-<ol>
-<li>简单了解ES6语法</li>
-</ol>
-<p>学会简单的书写常用ES6语法</p>
-<hr>
-<ol>
-<li>更新自己的github<br>将项目全部更新到github上，并简单推广</li>
-</ol>
-<hr>
-<p>6.提高英语技能，达到能看懂简单文档水平，逐步达到看英文文档的标（暂时不做如此高要求，年度任务之一）</p>
-<hr>
-<p>7.提高自己的java后台开发能力，主要着力学习spring全家桶<br>spring core 、spring boot、spring Batch 、spring security</p>
-<hr>
-<p>8.着力搭建自己前后台分离框架，前台使用Vue，后台使用spring+mybatis</p>
-<hr>
-<h3 id="简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变"><a href="#简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变" class="headerlink" title="简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变"></a>简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/19/wenyao's自留地/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1353,6 +1356,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>

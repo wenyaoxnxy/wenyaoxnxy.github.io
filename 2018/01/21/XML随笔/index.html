@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wenyaoxnxy">
-  <title>Archives: 2017/8 | wenyao&#39;s blog</title>
+  <title>XML随笔 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wenyao&#39;s blog">
-<meta property="og:url" content="https://github.com/wenyaoxnxy/archives/2017/08/index.html">
+  <meta name="description" content="最近项目上在弄xml的解析，遇到了一些坑，就记录下来 xml解析规则在JAXB标准中，对象上面的注解都是统一的，不管使用什么方式（工具）进行解析项目中使用的是JAXBProcessor 进行解析   123JAXBProcessor jaxbPro = new JAXBProcessor();ProcessInfoPojo processInfoPojo = new ProcessInfoPojo">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XML随笔">
+<meta property="og:url" content="https://github.com/wenyaoxnxy/2018/01/21/XML随笔/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
+<meta property="og:description" content="最近项目上在弄xml的解析，遇到了一些坑，就记录下来 xml解析规则在JAXB标准中，对象上面的注解都是统一的，不管使用什么方式（工具）进行解析项目中使用的是JAXBProcessor 进行解析   123JAXBProcessor jaxbPro = new JAXBProcessor();ProcessInfoPojo processInfoPojo = new ProcessInfoPojo">
+<meta property="og:image" content="http://wenyaoxnxy.github.io/img/xmlAnnotation.png">
+<meta property="og:updated_time" content="2018-01-21T13:25:35.123Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wenyao&#39;s blog">
+<meta name="twitter:title" content="XML随笔">
+<meta name="twitter:description" content="最近项目上在弄xml的解析，遇到了一些坑，就记录下来 xml解析规则在JAXB标准中，对象上面的注解都是统一的，不管使用什么方式（工具）进行解析项目中使用的是JAXBProcessor 进行解析   123JAXBProcessor jaxbPro = new JAXBProcessor();ProcessInfoPojo processInfoPojo = new ProcessInfoPojo">
+<meta name="twitter:image" content="http://wenyaoxnxy.github.io/img/xmlAnnotation.png">
   
     <link rel="alternative" href="/atom.xml" title="wenyao&#39;s blog" type="application/atom+xml">
   
@@ -165,60 +172,125 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-XML随笔" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/19/尚未该分类blog/" class="archive-article-date">
-  	<time datetime="2017-08-19T08:22:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/19/尚未该分类blog/">尚未该分类blog</a>
+    <h1 class="article-title" itemprop="name">
+      XML随笔
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/01/21/XML随笔/" class="archive-article-date">
+  	<time datetime="2018-01-21T13:21:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近项目上在弄xml的解析，遇到了一些坑，就记录下来</p>
+<h1 id="xml解析规则"><a href="#xml解析规则" class="headerlink" title="xml解析规则"></a>xml解析规则</h1><p>在JAXB标准中，对象上面的注解都是统一的，不管使用什么方式（工具）进行解析<br>项目中使用的是JAXBProcessor 进行解析  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">JAXBProcessor jaxbPro = new JAXBProcessor();</div><div class="line">ProcessInfoPojo processInfoPojo = new ProcessInfoPojo();</div><div class="line">processInfoPojo = (ProcessInfoPojo) jaxbPro.unMarshal(processInfoPojo, sb.toString());</div></pre></td></tr></table></figure>
+<p>主要是注解的使用，比较关键的一个注解为@XmlElementWrapper，如果需要包裹就需要选用此注解，具体使用方法可以参考下图<br><img src="http://wenyaoxnxy.github.io/img/xmlAnnotation.png" alt="image"></p>
+<h1 id="xml的BOM"><a href="#xml的BOM" class="headerlink" title="xml的BOM"></a>xml的BOM</h1><p>后端解析xml的时候有一个坑，xml的BOM<br>如果你在进行解析时候一直提示错误  </p>
+<blockquote>
+<p> Content is not allowed in prolog. Nested exception: Content is not allowed in prolog.</p>
+</blockquote>
+<p>检查xml发现没有任何问题，这个时候就要考虑是不是xml的BOM导致的。<br> BOM：Byte Order Mark，中文名字节顺序标记。UCS规范建议在传输字节流前，先传输BOM来判断字节顺序。<br> 其实UTF-8是不需要用BOM来表明字节顺序的，但是可以用BOM来表明编码方式。BOM的UTF-8编码是EF BB BF，所以呢，如果接受者收到EF BB BF开头的字节流，就说明它是UTF-8编码了。</p>
+<p>由此可见，对于UTF-8来说，BOM是可有可无的，可是，有的XML解析方式不认这个BOM，所以就报错了。</p>
+<p>xml解析规则：翻文档发现<br>  W3C定义了三条XML解析器如何正确读取XML文件的编码的规则：  </p>
+<blockquote>
+<p> 1，如果文挡有BOM(字节顺序标记，一般来说，如果保存为unicode格式，则包含BOM，ANSI则无)，就定义了文件编码<br> 2，如果没有BOM，就查看XML声明的编码属性<br> 3，如果上述两个都没有，就假定XML文挡采用UTF-8编码</p>
+</blockquote>
+<p><strong> 如何解决</strong></p>
+<h3 id="1、写入"><a href="#1、写入" class="headerlink" title="1、写入"></a>1、写入</h3><p> 之前生成XML的代码是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">XmlWriterSettings settings = new XmlWriterSettings();</div><div class="line">settings.Encoding = System.Text.Encoding.GetEncoding(&quot;utf-8&quot;);</div><div class="line">XmlWriter writer = XmlWriter.Create(pathName, settings);</div></pre></td></tr></table></figure>
+<p>修改之后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">XmlWriterSettings settings = new XmlWriterSettings();</div><div class="line">settings.Encoding = new UTF8Encoding(false);</div><div class="line">XmlWriter writer = XmlWriter.Create(pathName, settings);</div></pre></td></tr></table></figure>
+<p>这样用XmlWriter生成的XML就是不带BOM的了  </p>
+<p>同样，使用servlet下载的文件是不带BOM的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">String fileName = URLEncoder.encode(results.get(&quot;fileName&quot;), &quot;UTF-8&quot;) + &quot;.xml&quot;;</div><div class="line">// 下载必须设置头</div><div class="line">response.setHeader(&quot;content-disposition&quot;,&quot;attachment;filename=&quot; + fileName);</div><div class="line">response.setContentType(&quot;text/xml;charset=utf-8&quot;);</div><div class="line">// 获得文件</div><div class="line">InputStream is = new ByteArrayInputStream(results.get(&quot;xmlResult&quot;).getBytes());</div><div class="line">// 输出流</div><div class="line">OutputStream os = response.getOutputStream();</div><div class="line">byte[] buffer = new byte[1024];</div><div class="line">int len = -1;</div><div class="line">while ((len = is.read(buffer)) != -1) &#123;</div><div class="line">	os.write(buffer, 0, len);</div><div class="line">&#125;</div><div class="line">os.close();</div><div class="line">is.close();</div></pre></td></tr></table></figure>
+<h3 id="2、读取"><a href="#2、读取" class="headerlink" title="2、读取"></a>2、读取</h3><p> 推荐阅读<br> <a href="http://blog.csdn.net/littleatp2008/article/details/6943215" target="_blank" rel="external">http://blog.csdn.net/littleatp2008/article/details/6943215</a><br> 项目中使用的是第二种解决方式。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//文件有两种情况，一种带有BOM的xml和不带BOMxml，直接读取只能转换不带BOM的xml，下面方法两种方式都可以兼容</div><div class="line">File xmlFile = new File(&quot;D:\\exporttest.xml&quot;);</div><div class="line">FileInputStream fis = new FileInputStream(xmlFile);</div><div class="line">UnicodeReader ur = new UnicodeReader(fis, &quot;utf-8&quot;);  </div><div class="line">BufferedReader br = new BufferedReader(ur); </div><div class="line">StringBuffer sb = new StringBuffer();</div><div class="line">String line = null;  </div><div class="line">while((line = br.readLine()) != null)&#123; </div><div class="line">	sb.append(line);</div><div class="line">&#125;  </div><div class="line">br.close();</div><div class="line"></div><div class="line">JAXBProcessor jaxbPro = new JAXBProcessor();</div><div class="line">ProcessInfoPojo processInfoPojo = new ProcessInfoPojo();</div><div class="line">processInfoPojo = (ProcessInfoPojo) jaxbPro.unMarshal(processInfoPojo, sb.toString());</div></pre></td></tr></table></figure>
+<h1 id="XML-命名空间（XML-Namespaces）"><a href="#XML-命名空间（XML-Namespaces）" class="headerlink" title="XML 命名空间（XML Namespaces）"></a>XML 命名空间（XML Namespaces）</h1><p>W3C对Namespaces 的定义如下<br>XML 命名空间提供避免元素命名冲突的方法。  </p>
+<p>Dom4j解析xml时候需要过滤Namespaces，如下xml中，如果需要获取&lt;activiti:executionListener.. 节点中的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;definitions xmlns=&quot;http://www.omg.org/spec/BPMN/20100524/MODEL&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:activiti=&quot;http://activiti.org/bpmn&quot; xmlns:bpmndi=&quot;http://www.omg.org/spec/BPMN/20100524/DI&quot; xmlns:omgdc=&quot;http://www.omg.org/spec/DD/20100524/DC&quot; xmlns:omgdi=&quot;http://www.omg.org/spec/DD/20100524/DI&quot; typeLanguage=&quot;http://www.w3.org/2001/XMLSchema&quot; expressionLanguage=&quot;http://www.w3.org/1999/XPath&quot; targetNamespace=&quot;http://www.activiti.org/test&quot;&gt;</div><div class="line">	&lt;process id=&quot;P201711301052229770&quot; name=&quot;测试2&quot;&gt;</div><div class="line">		&lt;extensionElements&gt;</div><div class="line">			&lt;activiti:executionListener event=&quot;end&quot; class=&quot;com.yss.uco.workflow.wf.bpm.service.listener.WorkflowExecutionListenerHook&quot;&gt;</div><div class="line">				&lt;activiti:field name=&quot;listenerClassName&quot;&gt;</div><div class="line">					&lt;activiti:string&gt;</div><div class="line">						&lt;![CDATA[com.yss.fast.task.task.workflowlistener.TaskScheduler4WorkflowEndListener(Task)]]&gt;</div><div class="line">					&lt;/activiti:string&gt;</div><div class="line">				&lt;/activiti:field&gt;</div><div class="line">			&lt;/activiti:executionListener&gt;</div><div class="line">		&lt;/extensionElements&gt;</div><div class="line">		...</div></pre></td></tr></table></figure>
+<p>需要忽略namespaces进行解析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Element&gt; executionListenerList = root.element(&quot;extensionElements&quot;).elements(&quot;executionListener&quot;);</div></pre></td></tr></table></figure>
+<p>而不是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Element&gt; executionListenerList = root.element(&quot;extensionElements&quot;).elements(&quot;activiti:executionListener&quot;);</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/01/06/activiti-modeler-自定义节点属性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">activiti modeler 自定义节点属性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -241,8 +313,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
