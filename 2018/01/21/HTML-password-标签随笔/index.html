@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wenyaoxnxy">
-  <title>尚未该分类blog | wenyao&#39;s blog</title>
+  <title>HTML password 标签随笔 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="后端">
+  <meta name="description" content="学习html的时候大家应该在w3school上看到过下面的介绍  Password 对象Password 对象代表 HTML 表单中的密码字段。   HTML 的  标签在表单上每出现一次，一个 Password 对象就会被创建。 该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号），以防止旁边的人从他背后看到输入的内容。不过需要注意的是，当表单">
+<meta name="keywords" content="安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="尚未该分类blog">
-<meta property="og:url" content="https://github.com/wenyaoxnxy/2017/08/19/尚未该分类blog/index.html">
+<meta property="og:title" content="HTML password 标签随笔">
+<meta property="og:url" content="https://github.com/wenyaoxnxy/2018/01/21/HTML-password-标签随笔/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
-<meta property="og:updated_time" content="2017-09-22T15:25:15.607Z">
+<meta property="og:description" content="学习html的时候大家应该在w3school上看到过下面的介绍  Password 对象Password 对象代表 HTML 表单中的密码字段。   HTML 的  标签在表单上每出现一次，一个 Password 对象就会被创建。 该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号），以防止旁边的人从他背后看到输入的内容。不过需要注意的是，当表单">
+<meta property="og:image" content="https://note.youdao.com/password-lp.jpg">
+<meta property="og:image" content="https://note.youdao.com/password-100offer.jpg">
+<meta property="og:image" content="https://note.youdao.com/password-bk.jpg">
+<meta property="og:updated_time" content="2018-01-21T14:47:11.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="尚未该分类blog">
+<meta name="twitter:title" content="HTML password 标签随笔">
+<meta name="twitter:description" content="学习html的时候大家应该在w3school上看到过下面的介绍  Password 对象Password 对象代表 HTML 表单中的密码字段。   HTML 的  标签在表单上每出现一次，一个 Password 对象就会被创建。 该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号），以防止旁边的人从他背后看到输入的内容。不过需要注意的是，当表单">
+<meta name="twitter:image" content="https://note.youdao.com/password-lp.jpg">
   
     <link rel="alternative" href="/atom.xml" title="wenyao&#39;s blog" type="application/atom+xml">
   
@@ -167,27 +174,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-尚未该分类blog" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HTML-password-标签随笔" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      尚未该分类blog
+      HTML password 标签随笔
     </h1>
   
 
         
-        <a href="/2017/08/19/尚未该分类blog/" class="archive-article-date">
-  	<time datetime="2017-08-19T08:22:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
+        <a href="/2018/01/21/HTML-password-标签随笔/" class="archive-article-date">
+  	<time datetime="2018-01-21T14:46:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>学习html的时候大家应该在w3school上看到过下面的介绍</p>
+<blockquote>
+<h2 id="Password-对象"><a href="#Password-对象" class="headerlink" title="Password 对象"></a>Password 对象</h2><p>Password 对象代表 HTML 表单中的密码字段。  </p>
+<p>HTML 的 <input type="password"> 标签在表单上每出现一次，一个 Password 对象就会被创建。</p>
+<p>该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号<em>），以防止旁边的人从他背后看到输入的内容。不过需要注意的是，当表单提交时，输入是用<em>*明文发送</em></em>的。</p>
+</blockquote>
+<p>密码使用明文发送，即在网络的传输的过程中未被加密处理，password作为表单的一个属性值，随着http请求的发送，直接在互联网上传输。<br>假如你的主机到目标服务器之间，某个环节流量被监控，你的密码就会被别人获取。<br>如下示意图<br>主机–&gt;路由器（A）–&gt;路由器(B)&lt;-流量监控（解析http请求，获取password）–&gt;…–&gt;服务器<br>这种是比较常见的中间人攻击，也是目前安全测试常用的使用方式，抓取http请求，然后分析你的请求数据可以检查敏感数据是否明文传送，同时可以使用平行攻击，即按照传输数据的规则，可以伪装url，获取数据。具体这块的东西有时间再单独写一篇blog吧。现在这里写个引子。<br>这种最为常见的安全问题，真的有公司掉坑里面吗？<br>下面列举几个<br><img src="https://note.youdao.com/password-lp.jpg" alt="image"><br><img src="https://note.youdao.com/password-100offer.jpg" alt="image"><br><img src="https://note.youdao.com/password-bk.jpg" alt="image"><br>前面两个公司是比较有名的互联网公司，最后一个为长沙的本土互联网教育公司<br>我们发现在互联网行业，不管是大公司还是小公司，他们对于安全意识的薄弱。  </p>
+<h2 id="那么问题来了，怎么破？"><a href="#那么问题来了，怎么破？" class="headerlink" title="那么问题来了，怎么破？"></a>那么问题来了，怎么破？</h2><h3 id="常见的解决方案"><a href="#常见的解决方案" class="headerlink" title="常见的解决方案"></a>常见的解决方案</h3><ol>
+<li>不修改代码<br> 如果不打算修改代码，最简单的办法应该是https了，https保证了传输链路的安全，且数据加密，就算中间拦截了你的http请求，没有密钥也无法查看数据。但是https对服务器的性能还是有一定的影响，而且免费的方案需要定时刷新密钥，且稳定性不能保证。<br> 具体实施可以参考 陈皓大神的这篇文章 <a href="https://coolshell.cn/articles/18094.html" target="_blank" rel="external">如何免费的让网站启用HTTPS</a></li>
+<li>修改代码<br> 主要是前台使用js或者控件(插件的方式兼容性不太好，而且chrome从53版本后就不支持插件，所以不推荐)进行加密，后台进行解密，从而保证了传输过程中密码不是明文传输的。<br> 其中最关键的步骤是加密的过程，一定要使用非对称加密，且公私钥的产生非常关键<br> 具体的实现方式后续再补充（实践过程中使用过的都是公司采购，需要在互联网上查询开源解决方式）</li>
+</ol>
+<p>两种实现方式建议都实践，https好处也不单单是防止中间人攻击，现在运营商劫持流量的情况实在太严重，防止运营商加入弹窗广告，等等。但是也还是按照实际情况来决定是否开启。</p>
+<p>这个只是由password标签的一个引子，后续会继续讲讲安全方面的内容。</p>
+
       
 
       
@@ -200,7 +220,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
         		</li>
       		
 		</ul>
@@ -219,18 +239,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/09/19/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/19/wenyao's自留地/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">wenyao&#39;s自留地</div>
+    <a href="/2018/01/21/XML随笔/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">XML随笔</div>
       <i class="icon-circle-right"></i>
     </a>
   
