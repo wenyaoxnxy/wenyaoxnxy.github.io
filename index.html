@@ -213,7 +213,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map.put(&quot;data&quot;, &quot;admin&quot;.equals(request.getParameter(&quot;username&quot;)) &amp;&amp; &quot;123&quot;.equals(pt) ? &quot;登录成功&quot;:&quot;登录失败&quot;);</div></pre></td></tr></table></figure>
 <p>用户名为admin，密码为123则登录成功。</p>
 <h2 id="具体在生产中，可以使用如下的方式进行密码的处理"><a href="#具体在生产中，可以使用如下的方式进行密码的处理" class="headerlink" title="具体在生产中，可以使用如下的方式进行密码的处理"></a>具体在生产中，可以使用如下的方式进行密码的处理</h2><p>1、服务端获取明文password+salt 进行哈希算法（MD5等）入库。<br>2、每次登录后使用同样的“盐”进行处理，如果hash一致，则密码匹配</p>
-<h2 id="需要注意的是"><a href="#需要注意的是" class="headerlink" title="需要注意的是"></a>需要注意的是</h2><p>1、一定不要使用对称密钥将密码入库<br>2、需要注意的是salt不能是容易破解的，尽可能的无规则，同时也要做好保密，防止外泄！<br>3、生产环境的salt不要在开发代码中存在。<br>4、如果有条件可以把密码单独部署一台加密机，与业务解耦。</p>
+<h2 id="需要注意的是"><a href="#需要注意的是" class="headerlink" title="需要注意的是"></a>需要注意的是</h2><p>1、一定不要使用对称密钥将密码入库<br>2、需要注意的是salt不能是容易破解的，尽可能的无规则，同时也要做好保密，防止外泄！<br>3、生产环境的salt不要在开发代码中存在。<br>4、如果有条件可以把密码单独部署一台加密机，与业务解耦。  </p>
 <h3 id="后续应该讲解一下加密解密和加签验签的区别"><a href="#后续应该讲解一下加密解密和加签验签的区别" class="headerlink" title="后续应该讲解一下加密解密和加签验签的区别"></a>后续应该讲解一下加密解密和加签验签的区别</h3><p>简单来讲，加密解密，是原文的翻译和还原。<br>签名验签，是原文的哈希，是一种验证。<br>两者区别还是挺大的。后续后写一篇文章来介绍两者的具体实现和使用场景。  </p>
 
       
@@ -1414,11 +1414,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">activiti</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">activiti</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
