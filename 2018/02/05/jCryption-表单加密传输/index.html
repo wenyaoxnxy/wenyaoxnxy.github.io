@@ -6,23 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wenyaoxnxy">
-  <title>HTML password 标签随笔 | wenyao&#39;s blog</title>
+  <title>jCryption--表单加密传输 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习html的时候大家应该在w3school上看到过下面的介绍  Password 对象Password 对象代表 HTML 表单中的密码字段。   HTML 的 &amp;lt;input type=”password”&amp;gt; 标签在表单上每出现一次，一个 Password 对象就会被创建。 该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号），以防">
+  <meta name="description" content="在HTML password 标签随笔这篇文章中提到了password标签在使用中需要使用JS对password进行加密后才能在网络中进行传输。下面就介绍JavaScript数据加密插件jCryption。   使用jCryption进行表单提交加密网上找了好久的资料，最推荐使用的是jQuery插件jCryption。同时在浩哥的博客中也有介绍。   原理如下图客户端先生成密钥串，然后请求服务端根">
 <meta name="keywords" content="安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML password 标签随笔">
-<meta property="og:url" content="https://github.com/wenyaoxnxy/2018/01/21/HTML-password-标签随笔/index.html">
+<meta property="og:title" content="jCryption--表单加密传输">
+<meta property="og:url" content="https://github.com/wenyaoxnxy/2018/02/05/jCryption-表单加密传输/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
-<meta property="og:description" content="学习html的时候大家应该在w3school上看到过下面的介绍  Password 对象Password 对象代表 HTML 表单中的密码字段。   HTML 的 &amp;lt;input type=”password”&amp;gt; 标签在表单上每出现一次，一个 Password 对象就会被创建。 该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号），以防">
-<meta property="og:image" content="http://wenyaoxnxy.github.io/img/password-lp.jpg">
-<meta property="og:image" content="http://wenyaoxnxy.github.io/img/password-100offer.jpg">
-<meta property="og:image" content="http://wenyaoxnxy.github.io/img/password-bk.jpg">
-<meta property="og:updated_time" content="2018-01-27T14:48:49.200Z">
+<meta property="og:description" content="在HTML password 标签随笔这篇文章中提到了password标签在使用中需要使用JS对password进行加密后才能在网络中进行传输。下面就介绍JavaScript数据加密插件jCryption。   使用jCryption进行表单提交加密网上找了好久的资料，最推荐使用的是jQuery插件jCryption。同时在浩哥的博客中也有介绍。   原理如下图客户端先生成密钥串，然后请求服务端根">
+<meta property="og:image" content="http://wenyaoxnxy.github.io/img/加密.png">
+<meta property="og:image" content="http://wenyaoxnxy.github.io/img/firstRequest.png">
+<meta property="og:image" content="http://wenyaoxnxy.github.io/img/secondRequest.png">
+<meta property="og:image" content="http://wenyaoxnxy.github.io/img/submitRequest.png">
+<meta property="og:updated_time" content="2018-02-05T13:44:32.513Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML password 标签随笔">
-<meta name="twitter:description" content="学习html的时候大家应该在w3school上看到过下面的介绍  Password 对象Password 对象代表 HTML 表单中的密码字段。   HTML 的 &amp;lt;input type=”password”&amp;gt; 标签在表单上每出现一次，一个 Password 对象就会被创建。 该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号），以防">
-<meta name="twitter:image" content="http://wenyaoxnxy.github.io/img/password-lp.jpg">
+<meta name="twitter:title" content="jCryption--表单加密传输">
+<meta name="twitter:description" content="在HTML password 标签随笔这篇文章中提到了password标签在使用中需要使用JS对password进行加密后才能在网络中进行传输。下面就介绍JavaScript数据加密插件jCryption。   使用jCryption进行表单提交加密网上找了好久的资料，最推荐使用的是jQuery插件jCryption。同时在浩哥的博客中也有介绍。   原理如下图客户端先生成密钥串，然后请求服务端根">
+<meta name="twitter:image" content="http://wenyaoxnxy.github.io/img/加密.png">
   
     <link rel="alternative" href="/atom.xml" title="wenyao&#39;s blog" type="application/atom+xml">
   
@@ -174,44 +175,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-HTML-password-标签随笔" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-jCryption-表单加密传输" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      HTML password 标签随笔
+      jCryption--表单加密传输
     </h1>
   
 
         
-        <a href="/2018/01/21/HTML-password-标签随笔/" class="archive-article-date">
-  	<time datetime="2018-01-21T14:46:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
+        <a href="/2018/02/05/jCryption-表单加密传输/" class="archive-article-date">
+  	<time datetime="2018-02-05T13:37:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学习html的时候大家应该在w3school上看到过下面的介绍</p>
-<blockquote>
-<h2 id="Password-对象"><a href="#Password-对象" class="headerlink" title="Password 对象"></a>Password 对象</h2><p>Password 对象代表 HTML 表单中的密码字段。  </p>
-<p>HTML 的 &lt;input type=”password”&gt; 标签在表单上每出现一次，一个 Password 对象就会被创建。</p>
-<p>该文本输入字段供用户输入某些敏感的数据，比如密码等。当用户输入的时候，他的输入是被掩盖的（例如使用星号<em>），以防止旁边的人从他背后看到输入的内容。不过需要注意的是，当表单提交时，输入是用<em>*明文发送</em></em>的。</p>
-</blockquote>
-<p>密码使用明文发送，即在网络的传输的过程中未被加密处理，password作为表单的一个属性值，随着http请求的发送，直接在互联网上传输。<br>假如你的主机到目标服务器之间，某个环节流量被监控，你的密码就会被别人获取。<br>如下示意图<br>主机–&gt;路由器（A）–&gt;路由器(B)&lt;-流量监控（解析http请求，获取password）–&gt;…–&gt;服务器<br>这种是比较常见的中间人攻击，也是目前安全测试常用的使用方式，抓取http请求，然后分析你的请求数据可以检查敏感数据是否明文传送，同时可以使用平行攻击，即按照传输数据的规则，可以伪装url，获取数据。具体这块的东西有时间再单独写一篇blog吧。现在这里写个引子。<br>这种最为常见的安全问题，真的有公司掉坑里面吗？<br>下面列举几个<br><img src="http://wenyaoxnxy.github.io/img/password-lp.jpg" alt="image"><br><img src="http://wenyaoxnxy.github.io/img/password-100offer.jpg" alt="image"><br><img src="http://wenyaoxnxy.github.io/img/password-bk.jpg" alt="image"><br>前面两个公司是比较有名的互联网公司，最后一个为长沙的本土互联网教育公司<br>我们发现在互联网行业，不管是大公司还是小公司，他们对于安全意识的薄弱。  </p>
-<h2 id="那么问题来了，怎么破？"><a href="#那么问题来了，怎么破？" class="headerlink" title="那么问题来了，怎么破？"></a>那么问题来了，怎么破？</h2><h3 id="常见的解决方案"><a href="#常见的解决方案" class="headerlink" title="常见的解决方案"></a>常见的解决方案</h3><ol>
-<li>不修改代码<br> 如果不打算修改代码，最简单的办法应该是https了，https保证了传输链路的安全，且数据加密，就算中间拦截了你的http请求，没有密钥也无法查看数据。但是https对服务器的性能还是有一定的影响，而且免费的方案需要定时刷新密钥，且稳定性不能保证。<br> 具体实施可以参考 陈皓大神的这篇文章 <a href="https://coolshell.cn/articles/18094.html" target="_blank" rel="external">如何免费的让网站启用HTTPS</a></li>
-<li>修改代码<br> 主要是前台使用js或者控件(插件的方式兼容性不太好，而且chrome从53版本后就不支持插件，所以不推荐)进行加密，后台进行解密，从而保证了传输过程中密码不是明文传输的。<br> 其中最关键的步骤是加密的过程，一定要使用非对称加密，且公私钥的产生非常关键<br> 具体的实现方式后续再补充（实践过程中使用过的都是公司采购，需要在互联网上查询开源解决方式）</li>
-<li>使用短信验证码<br> 如果使用密码觉得有风险，目前互联网主流的做法就是使用短信验证码。<br> 避开密码的风险，但是提高了运营的成本。<br> 使用密码必然在传输过程中存在被拦截的风险，如果被“拖库”，同时攻击者知道了你的密码规则，风险就不言而喻了。使用短信验证码鉴权就不会存在这个问题。这也是短信验证码的优势。  </li>
+        <p>在<a href="https://wenyaoxnxy.github.io/2018/01/21/HTML-password-%E6%A0%87%E7%AD%BE%E9%9A%8F%E7%AC%94/" target="_blank" rel="external">HTML password 标签随笔</a>这篇文章中提到了password标签在使用中需要使用JS对password进行加密后才能在网络中进行传输。<br>下面就介绍JavaScript数据加密插件jCryption。  </p>
+<h2 id="使用jCryption进行表单提交加密"><a href="#使用jCryption进行表单提交加密" class="headerlink" title="使用jCryption进行表单提交加密"></a>使用jCryption进行表单提交加密</h2><p>网上找了好久的资料，最推荐使用的是jQuery插件jCryption。同时在浩哥的<a href="https://coolshell.cn/articles/1231.html" target="_blank" rel="external">博客</a>中也有介绍。  </p>
+<h2 id="原理如下图"><a href="#原理如下图" class="headerlink" title="原理如下图"></a>原理如下图</h2><p>客户端先生成密钥串，然后请求服务端根据客户端传入密钥串生成秘钥对。私钥保存在服务端，公钥发送至客户端。这样就实现了非对称加密（RSA）。<br><img src="http://wenyaoxnxy.github.io/img/加密.png" alt="image"><br>具体从前后台交互的http请求中可以看到<br>第一次http请求<br><img src="http://wenyaoxnxy.github.io/img/firstRequest.png" alt="image"><br>第二次http请求<br><img src="http://wenyaoxnxy.github.io/img/secondRequest.png" alt="image"><br>第三次http请求（表单提交）<br><img src="http://wenyaoxnxy.github.io/img/submitRequest.png" alt="image"></p>
+<h2 id="具体的流程是"><a href="#具体的流程是" class="headerlink" title="具体的流程是"></a>具体的流程是</h2><ol>
+<li><p>前台请求公钥（第一次、第二次HTTP请求）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   $.jCryption.authenticate(password, &quot;encrypt/generateKeyPair&quot;, &quot;encrypt/handshake&quot;,</div><div class="line">		function(AESKey) &#123;</div><div class="line">			// success</div><div class="line">			$(&quot;#password&quot;).attr(&quot;disable&quot;,&quot;false&quot;);</div><div class="line">		&#125;,</div><div class="line">		function() &#123;</div><div class="line">			// Authentication failed</div><div class="line">		&#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p> <a href="http://localhost:8080/encrypt/generateKeyPair" target="_blank" rel="external">http://localhost:8080/encrypt/generateKeyPair</a></p>
+</li>
 </ol>
-<blockquote>
-<pre><code>同时这个地方有一个API的设计细节需要注意，验证类API不能返回底层信息，只能返回true/false。
-切记不可查询信息，然后在前台进行判断！！！
-</code></pre></blockquote>
-<p>前两种实现方式建议都实践，https好处也不单单是防止中间人攻击，现在运营商劫持流量的情况实在太严重，防止运营商加入弹窗广告，等等。但是也还是按照实际情况来权衡是否开启。</p>
-<p>这个只是由password标签的一个引子，后续会继续讲讲安全方面的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/encrypt/generateKeyPair&quot;)</div><div class="line">public Map&lt;String, String&gt; generateKeyPair() &#123;</div><div class="line">	JCryption jc = new JCryption();</div><div class="line">	KeyPair keys = jc.getKeyPair();</div><div class="line">	byte[] b = SerializeUtils.serialize(keys);</div><div class="line">	redisTemplate.opsForValue().set(&quot;key&quot;, b, 600, TimeUnit.SECONDS);</div><div class="line">	Map&lt;String, String&gt; map = new HashMap&lt;&gt;();</div><div class="line">	map.put(&quot;e&quot;, jc.getPublicExponent());</div><div class="line">	map.put(&quot;n&quot;, jc.getKeyModulus());</div><div class="line">	map.put(&quot;maxdigits&quot;, String.valueOf(jc.getMaxDigits()));</div><div class="line">	System.out.println(map);</div><div class="line">	return map;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>http://localhost:8080/encrypt/handshake
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">   @RequestMapping(&quot;/encrypt/handshake&quot;)</div><div class="line">public Map&lt;String, String&gt; handshake(HttpServletRequest request) &#123;</div><div class="line">	JCryption jc = new JCryption(</div><div class="line">			(KeyPair) SerializeUtils.deSerialize((byte[]) redisTemplate.opsForValue().get(&quot;key&quot;)));</div><div class="line">	String key = jc.decrypt(request.getParameter(&quot;key&quot;));</div><div class="line">	redisTemplate.opsForValue().set(&quot;jCryptionKey&quot;, key, 600, TimeUnit.SECONDS);</div><div class="line">	/** Encrypts password using AES **/</div><div class="line">	String ct = AesCtr.encrypt(key, key, 256);</div><div class="line">	Map&lt;String, String&gt; map = new HashMap&lt;&gt;();</div><div class="line">	map.put(&quot;challenge&quot;, ct);</div><div class="line">	return map;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>将加密的表单提交后台（表单提交）<br><a href="http://localhost:8080/encrypt/decryptData" target="_blank" rel="external">http://localhost:8080/encrypt/decryptData</a><br>password为前台公钥。hashObj.getHash将发起请求公钥http请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   //init service public key</div><div class="line">var hashObj = new jsSHA(&quot;[[$&#123;factor&#125;]]&quot;, &quot;ASCII&quot;);</div><div class="line">var password = hashObj.getHash(&quot;SHA-512&quot;, &quot;HEX&quot;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将$(“#password”).val()内数据使用password（公钥）进行加密，并提交后台<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$(&quot;#decryptData&quot;).on(&quot;click&quot;,function()&#123;</div><div class="line">	var encryptedString = $.jCryption.encrypt($(&quot;#password&quot;).val(), password);</div><div class="line">	$.ajax(&#123;</div><div class="line">		url: &quot;encrypt/decryptData&quot;,</div><div class="line">		dataType: &quot;json&quot;,</div><div class="line">		type: &quot;POST&quot;,</div><div class="line">		data: &#123;</div><div class="line">			jCryption: encryptedString,</div><div class="line">			username:$(&quot;#username&quot;).val()</div><div class="line">		&#125;,</div><div class="line">		success: function(response) &#123;</div><div class="line">			alert(response.data);</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<ol>
+<li>服务端解密password<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/encrypt/decryptData&quot;)</div><div class="line">public Map&lt;String, String&gt; decryptData(HttpServletRequest request) &#123;</div><div class="line">	String key = (String) redisTemplate.opsForValue().get(&quot;jCryptionKey&quot;);</div><div class="line">	String pt = AesCtr.decrypt(request.getParameter(&quot;jCryption&quot;), key, 256);</div><div class="line">	Map&lt;String, String&gt; map = new HashMap&lt;&gt;();</div><div class="line">	map.put(&quot;data&quot;, &quot;admin&quot;.equals(request.getParameter(&quot;username&quot;)) &amp;&amp; &quot;123&quot;.equals(pt) ? &quot;登录成功&quot;:&quot;登录失败&quot;);</div><div class="line">	return map;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>具体的实现demo在GitHub上，地址是<a href="https://github.com/wenyaoxnxy/springboot-password-demo">https://github.com/wenyaoxnxy/springboot-password-demo  </a><br>项目使用Spring Boot构建,为什么使用Spring Boot呢？主要是构建项目快速，简单。<br>同时项目依赖redis，服务端密钥缓存在redis中，如果项目只是作为demo，可以使用全局Map缓存key值。<br>项目使用maven构建，使用jdk1.8。  </p>
+<p>工程构建完成后运行根目录下PasswordDemoApplication.java的main方法。项目将使用spring boot内置的tomcat运行。<br>在浏览器中输入<a href="http://localhost:8080/passwordEncrypt" target="_blank" rel="external">http://localhost:8080/passwordEncrypt</a><br>可以测试加密解密是否成功。后台有如下判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map.put(&quot;data&quot;, &quot;admin&quot;.equals(request.getParameter(&quot;username&quot;)) &amp;&amp; &quot;123&quot;.equals(pt) ? &quot;登录成功&quot;:&quot;登录失败&quot;);</div></pre></td></tr></table></figure>
+<p>用户名为admin，密码为123则登录成功。</p>
+<h2 id="具体在生产中，可以使用如下的方式进行密码的处理"><a href="#具体在生产中，可以使用如下的方式进行密码的处理" class="headerlink" title="具体在生产中，可以使用如下的方式进行密码的处理"></a>具体在生产中，可以使用如下的方式进行密码的处理</h2><p>1、服务端获取明文password+salt 进行哈希算法（MD5等）入库。<br>2、每次登录后使用同样的“盐”进行处理，如果hash一致，则密码匹配</p>
+<h2 id="需要注意的是"><a href="#需要注意的是" class="headerlink" title="需要注意的是"></a>需要注意的是</h2><p>1、一定不要使用对称密钥将密码入库<br>2、需要注意的是salt不能是容易破解的，尽可能的无规则，同时也要做好保密，防止外泄！<br>3、生产环境的salt不要在开发代码中存在。<br>4、如果有条件可以把密码单独部署一台加密机，与业务解耦。</p>
+<h3 id="后续应该讲解一下加密解密和加签验签的区别"><a href="#后续应该讲解一下加密解密和加签验签的区别" class="headerlink" title="后续应该讲解一下加密解密和加签验签的区别"></a>后续应该讲解一下加密解密和加签验签的区别</h3><p>简单来讲，加密解密，是原文的翻译和还原。<br>签名验签，是原文的哈希，是一种验证。<br>两者区别还是挺大的。后续后写一篇文章来介绍两者的具体实现和使用场景。  </p>
 
       
 
@@ -244,18 +255,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/02/05/jCryption-表单加密传输/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          jCryption--表单加密传输
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/21/XML随笔/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">XML随笔</div>
+    <a href="/2018/01/21/HTML-password-标签随笔/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML password 标签随笔</div>
       <i class="icon-circle-right"></i>
     </a>
   
