@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wenyaoxnxy">
-  <title>wenyao&#39;s自留地 | wenyao&#39;s blog</title>
+  <title>MQ随笔及RabbitMQ 安装使用 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2017计划好久没写blog了，2017年开始准备记录生活和工作中的点滴吧，从今天开始写今年的第一篇blog，主要是列举今年上半年的计划。 下面列举下今年的计划  熟练掌握VueJs的使用用  VueJs自己编写一个小DEMO，开发一个完整的仿饿了么前端DEMO，并且放入crodova中，用真机模拟调试。   熟练掌握微信小程序的开发  熟悉小程序DEMO，并使用豆瓣API开发出一个仿豆瓣的应用，">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="MQ使用场景MQ在实际应用中应用还是比较普遍的。目前就工作中遇到的场景能使用的地方主要为以下几种情况1、利用队列，实现削峰填谷，减缓峰值时服务器压力2、利用消息的发布/订阅（Publish/Subscribe）机制，可以优化业务执行逻辑。比如订单下单，主流程应该是支付成功即可下单成功。积分变动、微信推送、短信推送、等等其他的操作可以通过订阅的方式完成，而不是写在主流程中。3、服务降级同样是上述的场">
+<meta name="keywords" content="中间件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wenyao&#39;s自留地">
-<meta property="og:url" content="https://github.com/wenyaoxnxy/2017/06/19/wenyao's自留地/index.html">
+<meta property="og:title" content="MQ随笔及RabbitMQ 安装使用">
+<meta property="og:url" content="https://github.com/wenyaoxnxy/2018/02/05/MQ随笔及RabbitMQ-安装使用/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
-<meta property="og:description" content="2017计划好久没写blog了，2017年开始准备记录生活和工作中的点滴吧，从今天开始写今年的第一篇blog，主要是列举今年上半年的计划。 下面列举下今年的计划  熟练掌握VueJs的使用用  VueJs自己编写一个小DEMO，开发一个完整的仿饿了么前端DEMO，并且放入crodova中，用真机模拟调试。   熟练掌握微信小程序的开发  熟悉小程序DEMO，并使用豆瓣API开发出一个仿豆瓣的应用，">
-<meta property="og:updated_time" content="2017-09-22T15:27:02.570Z">
+<meta property="og:description" content="MQ使用场景MQ在实际应用中应用还是比较普遍的。目前就工作中遇到的场景能使用的地方主要为以下几种情况1、利用队列，实现削峰填谷，减缓峰值时服务器压力2、利用消息的发布/订阅（Publish/Subscribe）机制，可以优化业务执行逻辑。比如订单下单，主流程应该是支付成功即可下单成功。积分变动、微信推送、短信推送、等等其他的操作可以通过订阅的方式完成，而不是写在主流程中。3、服务降级同样是上述的场">
+<meta property="og:updated_time" content="2018-02-05T14:07:46.654Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wenyao&#39;s自留地">
-<meta name="twitter:description" content="2017计划好久没写blog了，2017年开始准备记录生活和工作中的点滴吧，从今天开始写今年的第一篇blog，主要是列举今年上半年的计划。 下面列举下今年的计划  熟练掌握VueJs的使用用  VueJs自己编写一个小DEMO，开发一个完整的仿饿了么前端DEMO，并且放入crodova中，用真机模拟调试。   熟练掌握微信小程序的开发  熟悉小程序DEMO，并使用豆瓣API开发出一个仿豆瓣的应用，">
+<meta name="twitter:title" content="MQ随笔及RabbitMQ 安装使用">
+<meta name="twitter:description" content="MQ使用场景MQ在实际应用中应用还是比较普遍的。目前就工作中遇到的场景能使用的地方主要为以下几种情况1、利用队列，实现削峰填谷，减缓峰值时服务器压力2、利用消息的发布/订阅（Publish/Subscribe）机制，可以优化业务执行逻辑。比如订单下单，主流程应该是支付成功即可下单成功。积分变动、微信推送、短信推送、等等其他的操作可以通过订阅的方式完成，而不是写在主流程中。3、服务降级同样是上述的场">
   
     <link rel="alternative" href="/atom.xml" title="wenyao&#39;s blog" type="application/atom+xml">
   
@@ -170,59 +170,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-wenyao&#39;s自留地" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MQ随笔及RabbitMQ-安装使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      wenyao&#39;s自留地
+      MQ随笔及RabbitMQ 安装使用
     </h1>
   
 
         
-        <a href="/2017/06/19/wenyao's自留地/" class="archive-article-date">
-  	<time datetime="2017-06-19T08:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+        <a href="/2018/02/05/MQ随笔及RabbitMQ-安装使用/" class="archive-article-date">
+  	<time datetime="2018-02-05T14:07:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2017计划"><a href="#2017计划" class="headerlink" title="2017计划"></a>2017计划</h1><p>好久没写blog了，2017年开始准备记录生活和工作中的点滴吧，从今天开始写今年的第一篇blog，主要是列举今年上半年的计划。</p>
-<h2 id="下面列举下今年的计划"><a href="#下面列举下今年的计划" class="headerlink" title="下面列举下今年的计划"></a>下面列举下今年的计划</h2><hr>
-<ol>
-<li>熟练掌握VueJs的使用用</li>
-</ol>
-<p>VueJs自己编写一个小DEMO，开发一个完整的仿饿了么前端DEMO，并且放入crodova中，用真机模拟调试。</p>
-<hr>
-<ol>
-<li>熟练掌握微信小程序的开发</li>
-</ol>
-<p>熟悉小程序DEMO，并使用豆瓣API开发出一个仿豆瓣的应用，后期可考虑实现一个稍微复杂应用</p>
-<hr>
-<ol>
-<li>熟练掌握CSS中的流式布局</li>
-</ol>
-<p>考虑在新接手的移动项目中使用流式布局进行适配</p>
-<hr>
-<ol>
-<li>简单了解ES6语法</li>
-</ol>
-<p>学会简单的书写常用ES6语法</p>
-<hr>
-<ol>
-<li>更新自己的github<br>将项目全部更新到github上，并简单推广</li>
-</ol>
-<hr>
-<p>6.提高英语技能，达到能看懂简单文档水平，逐步达到看英文文档的标（暂时不做如此高要求，年度任务之一）</p>
-<hr>
-<p>7.提高自己的java后台开发能力，主要着力学习spring全家桶<br>spring core 、spring boot、spring Batch 、spring security</p>
-<hr>
-<p>8.着力搭建自己前后台分离框架，前台使用Vue，后台使用spring+mybatis</p>
-<hr>
-<h3 id="简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变"><a href="#简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变" class="headerlink" title="简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变"></a>简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变</h3>
+        <h1 id="MQ使用场景"><a href="#MQ使用场景" class="headerlink" title="MQ使用场景"></a>MQ使用场景</h1><p>MQ在实际应用中应用还是比较普遍的。目前就工作中遇到的场景能使用的地方主要为以下几种情况<br>1、利用队列，实现削峰填谷，减缓峰值时服务器压力<br>2、利用消息的发布/订阅（Publish/Subscribe）机制，可以优化业务执行逻辑。<br>比如订单下单，主流程应该是支付成功即可下单成功。积分变动、微信推送、短信推送、等等其他的操作可以通过订阅的方式完成，而不是写在主流程中。<br>3、服务降级<br>同样是上述的场景，如果流量较大，可以将部分消息持久化，暂时不处理。将服务器应用于更加核心的功能处理。系统峰值过后，再处理消息，从而实现服务降级处理<br>以上是用于业务解耦的情况，其它常见场景包括最终一致性、广播、错峰流控等等<br>4、处理微信公众服务端重发。做过微信公众号应该都知道微信公众号开发有一个比较恶心的重发问题。如果在较短时间内无法响应，微信会丢弃原有请求，重新发起http请求到服务端，如果服务端没有做好校验，容易出现交易重发。之前我们在生产就出现过一次重复放贷（后续可以聊聊支付中如何确保不会发生重复交易）。<br>使用MQ可以在服务端接收请求后就返回前端。后续的交易可以使用ajax轮询或者http websocket推送的方式完成后续的交易。</p>
+<h1 id="windows-RabbitMQ-安装"><a href="#windows-RabbitMQ-安装" class="headerlink" title="windows RabbitMQ 安装"></a>windows RabbitMQ 安装</h1><p>1、RabbitMQ基于erlang，本机必须先安装erlang，<a href="http://www.erlang.org/downloads" target="_blank" rel="external">下载地址</a><br>2、下载RabbitMQ，<a href="https://www.rabbitmq.com/download.html" target="_blank" rel="external">下载地址</a><br>3、安装erlang<br>一路next即可。<br>如果为Windows，打开开始菜单，里面会有一个Erlang的执行文件。<br>环境变量中会新增一个配置项<br>ERLANG_HOME<br>d:\Program Files\erl9.2<br>4、安装RabbitMQ<br>执行文件一路next即可<br>检查是否安装成功<br>有几个地方需要注意<br>1.hosts文件中要有127.0.0.1 localhost的对应<br>2..erlang.cookie文件有三个路径，要统一<br>C:\Windows\System32\config\systemprofile<br>C:\Users\lenovo（用户名）<br>C:\Windows（如果为高版本，应该没有此路径，可以不考虑） </p>
+<p>服务未启动执行rabbitmqctl status<br>最后有提示</p>
+<blockquote>
+<p>Current node details:</p>
+<ul>
+<li>node name: ‘rabbitmqcli52@wenyao-PC’</li>
+<li>effective user’s home directory: C:\Users\lenovo</li>
+<li>Erlang cookie hash: aXFZrVZ2A9gF0kkNeMhRXA==</li>
+</ul>
+</blockquote>
+<p>Erlang cookie hash，值与上面的.erlang.cookie文本内内容一致（.erlang.cookie为只读，注意修改）</p>
+<p>推荐阅读此文章，详细介绍了MQ，及MQ的几大组成。同时提供了java demo帮助消化理解<br><a href="https://www.jianshu.com/p/79ca08116d57" target="_blank" rel="external">https://www.jianshu.com/p/79ca08116d57</a></p>
+
       
 
       
@@ -235,7 +216,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
         		</li>
       		
 		</ul>
@@ -254,15 +235,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/08/19/尚未该分类blog/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          尚未该分类blog
-        
-      </div>
-    </a>
   
+    <a href="/2018/02/05/jCryption-表单加密传输/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jCryption--表单加密传输</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
