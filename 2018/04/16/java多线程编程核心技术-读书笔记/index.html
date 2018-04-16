@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wenyaoxnxy">
-  <title>wenyao&#39;s blog</title>
+  <title>java多线程编程核心技术-读书笔记 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wenyao&#39;s blog">
-<meta property="og:url" content="https://github.com/wenyaoxnxy/page/2/index.html">
+  <meta name="description" content="近期感觉自己在java方面有很多的不足需要补充，主要为两个方面，第一个是多线程，第二个是NIO。借阅了两本书来补充自己的知识，多线程使用的是高洪岩编著的《java多线程编程技术》另外一本是《netty实战》本blog主要为学习《java多线程编程技术》的笔记，和部分自己的思考总结   Chapter 011. Thread主要有两种实现方式 继承Thread子类 实现Runnable接口主要区别为">
+<meta name="keywords" content="java后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java多线程编程核心技术-读书笔记">
+<meta property="og:url" content="https://github.com/wenyaoxnxy/2018/04/16/java多线程编程核心技术-读书笔记/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
+<meta property="og:description" content="近期感觉自己在java方面有很多的不足需要补充，主要为两个方面，第一个是多线程，第二个是NIO。借阅了两本书来补充自己的知识，多线程使用的是高洪岩编著的《java多线程编程技术》另外一本是《netty实战》本blog主要为学习《java多线程编程技术》的笔记，和部分自己的思考总结   Chapter 011. Thread主要有两种实现方式 继承Thread子类 实现Runnable接口主要区别为">
+<meta property="og:updated_time" content="2018-04-16T07:39:07.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wenyao&#39;s blog">
+<meta name="twitter:title" content="java多线程编程核心技术-读书笔记">
+<meta name="twitter:description" content="近期感觉自己在java方面有很多的不足需要补充，主要为两个方面，第一个是多线程，第二个是NIO。借阅了两本书来补充自己的知识，多线程使用的是高洪岩编著的《java多线程编程技术》另外一本是《netty实战》本blog主要为学习《java多线程编程技术》的笔记，和部分自己的思考总结   Chapter 011. Thread主要有两种实现方式 继承Thread子类 实现Runnable接口主要区别为">
   
     <link rel="alternative" href="/atom.xml" title="wenyao&#39;s blog" type="application/atom+xml">
   
@@ -165,270 +170,107 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-ES6-入门-对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-java多线程编程核心技术-读书笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/ES6-入门-对象/">ES6-入门-对象</a>
+    <h1 class="article-title" itemprop="name">
+      java多线程编程核心技术-读书笔记
     </h1>
   
 
         
-        <a href="/2017/09/22/ES6-入门-对象/" class="archive-article-date">
-  	<time datetime="2017-09-22T04:11:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-22</time>
+        <a href="/2018/04/16/java多线程编程核心技术-读书笔记/" class="archive-article-date">
+  	<time datetime="2018-04-16T07:38:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ES6-简单入门"><a href="#ES6-简单入门" class="headerlink" title="ES6 简单入门"></a>ES6 简单入门</h1><p>主要学习 @阮一峰 的<a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ES6电子书</a>，梳理今后工作中可能用到的一些功能和细节</p>
-<h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="1-属性的简洁表示法"><a href="#1-属性的简洁表示法" class="headerlink" title="1. 属性的简洁表示法"></a>1. 属性的简洁表示法</h3><p>ES6 允许直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var foo = &apos;bar&apos;;</div><div class="line">var baz = &#123;foo&#125;;</div><div class="line">baz // &#123;foo: &quot;bar&quot;&#125;</div><div class="line"></div><div class="line">// 等同于</div><div class="line">var baz = &#123;foo: foo&#125;;</div><div class="line"></div><div class="line">//定义函数</div><div class="line">function f(x, y) &#123;</div><div class="line">  return &#123;x, y&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 等同于</div><div class="line"></div><div class="line">function f(x, y) &#123;</div><div class="line">  return &#123;x: x, y: y&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">f(1, 2) // Object &#123;x: 1, y: 2&#125;</div></pre></td></tr></table></figure>
-<p>除了属性简写，方法也可以简写。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var o = &#123;</div><div class="line">	method()&#123;</div><div class="line">		return &quot;hello&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">console.log(o.method());//hello</div><div class="line">//等价于</div><div class="line">var o1 = &#123;</div><div class="line">	method:function()&#123;</div><div class="line">		return &quot;hello&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">console.log(o1.method());//hello</div></pre></td></tr></table></figure>
-<p>具体事例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var birth = &apos;2000/01/01&apos;;</div><div class="line"></div><div class="line">var Person = &#123;</div><div class="line"></div><div class="line">  name: &apos;张三&apos;,</div><div class="line"></div><div class="line">  //等同于birth: birth</div><div class="line">  birth,</div><div class="line"></div><div class="line">  // 等同于hello: function ()...</div><div class="line">  hello() &#123; console.log(&apos;我的名字是&apos;, this.name); &#125;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>属性的赋值器（setter）和取值器（getter），事实上也是采用这种写法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var cart = &#123;</div><div class="line">  _wheels: 4,</div><div class="line"></div><div class="line">  get wheels () &#123;</div><div class="line">    return this._wheels;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  set wheels (value) &#123;</div><div class="line">    if (value &lt; this._wheels) &#123;</div><div class="line">      throw new Error(&apos;数值太小了！&apos;);</div><div class="line">    &#125;</div><div class="line">    this._wheels = value;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ES6 允许字面量定义对象时，表达式作为对象的属性名，即把表达式放在方括号内。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var lastWord = &apos;last word&apos;;</div><div class="line"></div><div class="line">var a = &#123;</div><div class="line">  &apos;first word&apos;: &apos;hello&apos;,</div><div class="line">  [lastWord]: &apos;world&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">a[&apos;first word&apos;] // &quot;hello&quot;</div><div class="line">a[lastWord] // &quot;world&quot;</div><div class="line">a[&apos;last word&apos;] // &quot;world&quot;</div></pre></td></tr></table></figure>
-<p>表达式还可以用于定义方法名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let objhello=&#123;</div><div class="line">	[&apos;hell&apos;+&apos;o&apos;]()&#123;</div><div class="line">		return &apos;hello&apos;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">console.log(objhello.hello());</div></pre></td></tr></table></figure>
-<h3 id="方法的-name-属性"><a href="#方法的-name-属性" class="headerlink" title="方法的 name 属性"></a>方法的 name 属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let say = &#123;</div><div class="line">	sayHello()&#123;</div><div class="line">		console.log(&apos;hello ~&apos;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">console.log(say.sayHello.name); //sayHello</div></pre></td></tr></table></figure>
-<h3 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h3><p>ES5 比较两个值是否相等，只有两个运算符：相等运算符（\==）和严格相等运算符（=\==）。它们都有缺点，前者会自动转换数据类型，后者的NaN不等于自身，以及+0等于-0。JavaScript 缺乏一种运算，在所有环境中，只要两个值是一样的，它们就应该相等。<br>Object.is 用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致。<br>不同之处只有两个：一是+0不等于-0，二是NaN等于自身。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">console.log(Object.is(&apos;foo&apos;,&apos;foo&apos;));//true</div><div class="line">console.log(Object.is(&#123;&#125;,&#123;&#125;));//false</div><div class="line">console.log(+0 === -0);//true</div><div class="line">console.log(NaN === NaN);//false</div><div class="line">console.log(Object.is(+0 , -0));//false</div><div class="line">console.log(Object.is(NaN, NaN));//true</div></pre></td></tr></table></figure>
-<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h3><p>Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。<br>Object.assign方法的第一个参数是目标对象，后面的参数都是源对象。<br>如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var target = &#123; a: 1, b: 1 &#125;;</div><div class="line"></div><div class="line">var source1 = &#123; b: 2, c: 2 &#125;;</div><div class="line">var source2 = &#123; c: 3 &#125;;</div><div class="line"></div><div class="line">Object.assign(target, source1, source2);</div><div class="line">target // &#123;a:1, b:2, c:3&#125;</div></pre></td></tr></table></figure>
-<p>如果只有一个参数，Object.assign会直接返回该参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;a: 1&#125;;</div><div class="line">Object.assign(obj) === obj // true</div></pre></td></tr></table></figure></p>
-<p>如果该参数不是对象，则会先转成对象，然后返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typeof Object.assign(2) // &quot;object&quot;</div></pre></td></tr></table></figure></p>
-<p>由于undefined和null无法转成对象，所以如果它们作为参数，就会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Object.assign(undefined) // 报错</div><div class="line">Object.assign(null) // 报错</div></pre></td></tr></table></figure></p>
-<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><p>Object.assign方法实行的是浅拷贝，而不是深拷贝。也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;a: &#123;b: 1&#125;&#125;;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</div><div class="line"></div><div class="line">obj1.a.b = 2;</div><div class="line">obj2.a.b // 2</div></pre></td></tr></table></figure>
-<p>对于这种嵌套的对象，一旦遇到同名属性，Object.assign的处理方法是替换，而不是添加。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var target = &#123; a: &#123; b: &apos;c&apos;, d: &apos;e&apos; &#125; &#125;</div><div class="line">var source = &#123; a: &#123; b: &apos;hello&apos; &#125; &#125;</div><div class="line">Object.assign(target, source)</div><div class="line">// &#123; a: &#123; b: &apos;hello&apos; &#125; &#125;</div></pre></td></tr></table></figure></p>
-<p>Object.assign可以用来处理数组，但是会把数组视为对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Object.assign([1, 2, 3], [4, 5])</div><div class="line">// [4, 5, 3]</div></pre></td></tr></table></figure>
-<h4 id="常见用途"><a href="#常见用途" class="headerlink" title="常见用途"></a>常见用途</h4><p>Object.assign方法有很多用处。</p>
-<p>（1）为对象添加属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Point &#123;</div><div class="line">  constructor(x, y) &#123;</div><div class="line">    Object.assign(this, &#123;x, y&#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面方法通过Object.assign方法，将x属性和y属性添加到Point类的对象实例。</p>
-<p>（2）为对象添加方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Object.assign(SomeClass.prototype, &#123;</div><div class="line">  someMethod(arg1, arg2) &#123;</div><div class="line">    ···</div><div class="line">  &#125;,</div><div class="line">  anotherMethod() &#123;</div><div class="line">    ···</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 等同于下面的写法</div><div class="line">SomeClass.prototype.someMethod = function (arg1, arg2) &#123;</div><div class="line">  ···</div><div class="line">&#125;;</div><div class="line">SomeClass.prototype.anotherMethod = function () &#123;</div><div class="line">  ···</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>上面代码使用了对象属性的简洁表示法，直接将两个函数放在大括号中，再使用assign方法添加到SomeClass.prototype之中。</p>
-<p>（3）克隆对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function clone(origin) &#123;</div><div class="line">  return Object.assign(&#123;&#125;, origin);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面代码将原始对象拷贝到一个空对象，就得到了原始对象的克隆。</p>
-<p>不过，采用这种方法克隆，只能克隆原始对象自身的值，不能克隆它继承的值。如果想要保持继承链，可以采用下面的代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function clone(origin) &#123;</div><div class="line">  let originProto = Object.getPrototypeOf(origin);</div><div class="line">  return Object.assign(Object.create(originProto), origin);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>（4）合并多个对象</p>
-<p>将多个对象合并到某个对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const merge =</div><div class="line">  (target, ...sources) =&gt; Object.assign(target, ...sources);</div></pre></td></tr></table></figure>
-<p>如果希望合并后返回一个新对象，可以改写上面函数，对一个空对象合并。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const merge =</div><div class="line">  (...sources) =&gt; Object.assign(&#123;&#125;, ...sources);</div></pre></td></tr></table></figure>
-<p>（5）为属性指定默认值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const DEFAULTS = &#123;</div><div class="line">  logLevel: 0,</div><div class="line">  outputFormat: &apos;html&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function processContent(options) &#123;</div><div class="line">  options = Object.assign(&#123;&#125;, DEFAULTS, options);</div><div class="line">  console.log(options);</div><div class="line">  // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面代码中，DEFAULTS对象是默认值，options对象是用户提供的参数。Object.assign方法将DEFAULTS和options合并成一个新对象，如果两者有同名属性，则option的属性值会覆盖DEFAULTS的属性值。</p>
-<p>注意，由于存在浅拷贝的问题，DEFAULTS对象和options对象的所有属性的值，最好都是简单类型，不要指向另一个对象。否则，DEFAULTS对象的该属性很可能不起作用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const DEFAULTS = &#123;</div><div class="line">  url: &#123;</div><div class="line">    host: &apos;example.com&apos;,</div><div class="line">    port: 7070</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">processContent(&#123; url: &#123;port: 8000&#125; &#125;)</div><div class="line">// &#123;</div><div class="line">//   url: &#123;port: 8000&#125;</div><div class="line">// &#125;</div></pre></td></tr></table></figure>
-<p>上面代码的原意是将url.port改成8000，url.host不变。实际结果却是options.url覆盖掉DEFAULTS.url，所以url.host就不存在了。</p>
-<h4 id="属性的遍历"><a href="#属性的遍历" class="headerlink" title="属性的遍历"></a>属性的遍历</h4><p>ES6 一共有5种方法可以遍历对象的属性。  </p>
-<ol>
-<li>for…in</li>
-</ol>
-<p>for…in循环遍历对象自身的和继承的可枚举属性（不含 Symbol 属性）。</p>
-<ol>
-<li>Object.keys(obj)</li>
-</ol>
-<p>Object.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含 Symbol 属性）。</p>
-<ol>
-<li>Object.getOwnPropertyNames(obj)</li>
-</ol>
-<p>Object.getOwnPropertyNames返回一个数组，包含对象自身的所有属性（不含 Symbol 属性，但是包括不可枚举属性）。</p>
-<ol>
-<li>Object.getOwnPropertySymbols(obj)</li>
-</ol>
-<p>Object.getOwnPropertySymbols返回一个数组，包含对象自身的所有 Symbol 属性。</p>
-<ol>
-<li>Reflect.ownKeys(obj)</li>
-</ol>
-<p>Reflect.ownKeys返回一个数组，包含对象自身的所有属性，不管属性名是 Symbol 或字符串，也不管是否可枚举。</p>
-<p>以上的5种方法遍历对象的属性，都遵守同样的属性遍历的次序规则。</p>
-<p>首先遍历所有属性名为数值的属性，按照数字排序。<br>其次遍历所有属性名为字符串的属性，按照生成时间排序。<br>最后遍历所有属性名为 Symbol 值的属性，按照生成时间排序。</p>
-<h5 id="Object-keys-，Object-values-，Object-entries"><a href="#Object-keys-，Object-values-，Object-entries" class="headerlink" title="Object.keys()，Object.values()，Object.entries()"></a>Object.keys()，Object.values()，Object.entries()</h5><p>Object.keys()<br>ES5 引入了Object.keys方法，返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = &#123; foo: &apos;bar&apos;, baz: 42 &#125;;</div><div class="line">Object.keys(obj)</div><div class="line">// [&quot;foo&quot;, &quot;baz&quot;]</div></pre></td></tr></table></figure>
-<p>Object.keys配套的Object.values和Object.entries，作为遍历一个对象的补充手段，供for…of循环使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let obj = &#123; a: 1, b: 2, c: 3 &#125;;</div><div class="line"></div><div class="line">for (let key of keys(obj)) &#123;</div><div class="line">  console.log(key); // &apos;a&apos;, &apos;b&apos;, &apos;c&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (let value of values(obj)) &#123;</div><div class="line">  console.log(value); // 1, 2, 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (let [key, value] of entries(obj)) &#123;</div><div class="line">  console.log([key, value]); // [&apos;a&apos;, 1], [&apos;b&apos;, 2], [&apos;c&apos;, 3]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Object.entries的基本用途是遍历对象的属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">let obj = &#123; one: 1, two: 2 &#125;;</div><div class="line">for (let [k, v] of Object.entries(obj)) &#123;</div><div class="line">  console.log(</div><div class="line">    `$&#123;JSON.stringify(k)&#125;: $&#123;JSON.stringify(v)&#125;`</div><div class="line">  );</div><div class="line">&#125;</div><div class="line">// &quot;one&quot;: 1</div><div class="line">// &quot;two&quot;: 2</div></pre></td></tr></table></figure>
-<p>Object.entries方法的另一个用处是，将对象转为真正的Map结构。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = &#123; foo: &apos;bar&apos;, baz: 42 &#125;;</div><div class="line">var map = new Map(Object.entries(obj));</div><div class="line">map // Map &#123; foo: &quot;bar&quot;, baz: 42 &#125;</div></pre></td></tr></table></figure>
-<h4 id="Null-传导运算符"><a href="#Null-传导运算符" class="headerlink" title="Null 传导运算符"></a>Null 传导运算符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let message = &#123;body:&#123;</div><div class="line">	user:&#123;</div><div class="line">		firstName:&apos;wen&apos;</div><div class="line">	&#125;</div><div class="line">&#125;&#125;;</div><div class="line"></div><div class="line">const firstName = (message</div><div class="line">  &amp;&amp; message.body</div><div class="line">  &amp;&amp; message.body.user</div><div class="line">  &amp;&amp; message.body.user.firstName) || &apos;default&apos;;</div><div class="line">console.log(firstName);//wen</div><div class="line"></div><div class="line">let message = &#123;&#125;//default</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/22/ES6-入门-对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ES6-入门-数值、函数、数值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/ES6-入门-数值、函数、数值/">ES6-入门</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/19/ES6-入门-数值、函数、数值/" class="archive-article-date">
-  	<time datetime="2017-09-19T08:04:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ES6-简单入门"><a href="#ES6-简单入门" class="headerlink" title="ES6 简单入门"></a>ES6 简单入门</h1><p>主要学习 @阮一峰 的<a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ES6电子书</a>，梳理今后工作中可能用到的一些功能和细节</p>
-<h2 id="1-数值的新增功能"><a href="#1-数值的新增功能" class="headerlink" title="1 数值的新增功能"></a>1 数值的新增功能</h2><p>Number.isFinite()对于非数值一律返回false<br>Number.isNaN()只有对于NaN才返回true，非NaN一律返回false<br>Number.parseInt(), Number.parseFloat()<br>ES6 将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变<br>Number.isInteger()用来判断一个值是否为整数。需要注意的是，在 JavaScript 内部，整数和浮点数是同样的储存方法，所以3和3.0被视为同一个值<br>Number.isSafeInteger()则是用来判断一个整数是否落在这个范围之内  </p>
-<p>Math增加方法<br>Math.trunc方法用于去除一个数的小数部分，返回整数部分<br>对于非数值，Math.trunc内部使用Number方法将其先转为数值<br>对于空值和无法截取整数的值，返回NaN<br>Math.sign方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值<br>参数为正数，返回+1<br>参数为负数，返回-1<br>参数为0，返回0<br>参数为-0，返回-0<br>其他值，返回NaN  </p>
-<h2 id="2函数新增功能"><a href="#2函数新增功能" class="headerlink" title="2函数新增功能"></a>2函数新增功能</h2><p>函数参数的默认值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function log(x, y) &#123;</div><div class="line">  y = y || &apos;World&apos;;</div><div class="line">  console.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">log(&apos;Hello&apos;) // Hello World</div><div class="line">log(&apos;Hello&apos;, &apos;China&apos;) // Hello China</div><div class="line">log(&apos;Hello&apos;, &apos;&apos;) // Hello World</div></pre></td></tr></table></figure>
-<p>另外一种写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function log(x, y = &apos;World&apos;) &#123;</div><div class="line">  console.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">log(&apos;Hello&apos;) // Hello World</div><div class="line">log(&apos;Hello&apos;, &apos;China&apos;) // Hello China</div><div class="line">log(&apos;Hello&apos;, &apos;&apos;) // Hello</div></pre></td></tr></table></figure></p>
-<p>函数的 length 属性<br>指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，length属性将失真<br>作用域<br>一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var x = 1;</div><div class="line">function defaultValue(x,y = x)&#123;</div><div class="line">    console.log(x + &apos;-----------&apos; + y);</div><div class="line">&#125;</div><div class="line">defaultValue(2);//2-----------2</div></pre></td></tr></table></figure>
-<p>rest<br>rest 参数（形式为…变量名），用于获取函数的多余参数(类似java可变参数)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function add(...items)&#123;</div><div class="line">	let sum = 0;</div><div class="line">	for(let item of items)&#123;//不要使用in（in遍历key，of遍历value）</div><div class="line">		sum = sum + item;</div><div class="line">	&#125;</div><div class="line">	console.log(sum);</div><div class="line">&#125;</div><div class="line">add(1,2,3,4,5,6);</div><div class="line"></div><div class="line">function pushItems(a,...items)&#123;</div><div class="line">	items.forEach(function(item)&#123;</div><div class="line">		a.push(item);</div><div class="line">		console.log(a);</div><div class="line">	&#125;);</div><div class="line">&#125;</div><div class="line">var a = [];</div><div class="line">pushItems(a,2,3,4,5,6);</div></pre></td></tr></table></figure>
-<p>name 属性<br>函数的name属性，返回该函数的函数名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;&#125;</div><div class="line">console.log(foo.name);//foo</div></pre></td></tr></table></figure>
-<p>箭头函数<br>基本用法  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var f = v =&gt; v;</div></pre></td></tr></table></figure>
-<p>等价于</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var f = function(v) &#123;</div><div class="line">  return v;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var f = () =&gt; 5;</div><div class="line">// 等同于</div><div class="line">var f = function () &#123; return 5 &#125;;</div><div class="line"></div><div class="line">var sum = (num1, num2) =&gt; num1 + num2;</div><div class="line">// 等同于</div><div class="line">var sum = function(num1, num2) &#123;</div><div class="line">  return num1 + num2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>箭头符内如果有多行，必须用{}包裹，同时将结果return<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const addarr = (...items) =&gt; &#123;</div><div class="line">	let sum = 0;</div><div class="line">	for(let item of items)&#123;</div><div class="line">		sum = sum + item;</div><div class="line">	&#125;</div><div class="line">	console.log(sum);</div><div class="line">	return sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line">addarr(1,2,3,4);</div></pre></td></tr></table></figure></p>
-<p>如果箭头函数只有一行语句，且不需要返回值，可以采用下面的写法，就不用写大括号了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let fn = () =&gt; void doesNotReturn();</div></pre></td></tr></table></figure>
-<p>使用注意点<br>箭头函数有几个使用注意点。</p>
-<p>（1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
-<p>（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</p>
-<p>（3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</p>
-<p>（4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。</p>
-<p>上面四点中，第一点尤其值得注意。this对象的指向是可变的，但是在箭头函数中，它是固定的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function foosetTimeout()&#123;</div><div class="line">	setTimeout(()=&gt;&#123;</div><div class="line">		console.log(&apos;a:&apos;+this.id);</div><div class="line">	&#125;,100);</div><div class="line">&#125;</div><div class="line">let id = 12;</div><div class="line">foosetTimeout.call(&#123;id:13&#125;);</div><div class="line">//output 13</div></pre></td></tr></table></figure>
-<p>下面是一个部署管道机制（pipeline）的例子，即前一个函数的输出是后一个函数的输入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const pipeline = (...funcs) =&gt;</div><div class="line">  val =&gt; funcs.reduce((a, b) =&gt; b(a), val);</div><div class="line"></div><div class="line">const plus1 = a =&gt; a + 1;</div><div class="line">const mult2 = a =&gt; a * 2;</div><div class="line">const addThenMult = pipeline(plus1, mult2);</div><div class="line"></div><div class="line">addThenMult(5)</div><div class="line"></div><div class="line">// 12</div></pre></td></tr></table></figure>
-<p>如果觉得上面的写法可读性比较差，也可以采用下面的写法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const plus1 = a =&gt; a + 1;</div><div class="line">const mult2 = a =&gt; a * 2;</div><div class="line"></div><div class="line">mult2(plus1(5))</div><div class="line">// 12</div></pre></td></tr></table></figure>
-<p>函数参数的尾逗号  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function clownsEverywhere(</div><div class="line">  param1,</div><div class="line">  param2,</div><div class="line">) &#123; /* ... */ &#125;</div></pre></td></tr></table></figure>
-<h2 id="数组拓展功能"><a href="#数组拓展功能" class="headerlink" title="数组拓展功能"></a>数组拓展功能</h2><p>扩展运算符<br>扩展运算符（spread）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function pushArrray(array,...items)&#123;</div><div class="line">	array.push(...items);</div><div class="line">	console.log(array);</div><div class="line">&#125;</div><div class="line">let array = [4,5];</div><div class="line">pushArrray(array,...[6,7,8,9]);</div><div class="line">//[4, 5, 6, 7, 8, 9]</div><div class="line">//固定写法，function上需要写... 同时参数也需要增加...</div></pre></td></tr></table></figure>
-<p>如果扩展运算符后面是一个空数组，则不产生任何效果。</p>
-<p>替代数组的 apply 方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// ES5 的写法</div><div class="line">Math.max.apply(null, [14, 3, 77])</div><div class="line"></div><div class="line">// ES6 的写法</div><div class="line">Math.max(...[14, 3, 77])</div><div class="line"></div><div class="line">// 等同于</div><div class="line">Math.max(14, 3, 77);</div></pre></td></tr></table></figure>
-<p>扩展运算符的应用<br>（1）合并数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var arr1 = [&apos;a&apos;, &apos;b&apos;];</div><div class="line">var arr2 = [&apos;c&apos;];</div><div class="line">var arr3 = [&apos;d&apos;, &apos;e&apos;];</div><div class="line"></div><div class="line">// ES5的合并数组</div><div class="line">arr1.concat(arr2, arr3);</div><div class="line">// [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]</div><div class="line"></div><div class="line">// ES6的合并数组</div><div class="line">[...arr1, ...arr2, ...arr3]</div></pre></td></tr></table></figure>
-<p>（2）与解构赋值结合(如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const [first, ...rest] = [1, 2, 3, 4, 5];</div><div class="line">first // 1</div><div class="line">rest  // [2, 3, 4, 5]</div><div class="line"></div><div class="line">const [first, ...rest] = [];</div><div class="line">first // undefined</div><div class="line">rest  // []</div><div class="line"></div><div class="line">const [first, ...rest] = [&quot;foo&quot;];</div><div class="line">first  // &quot;foo&quot;</div><div class="line">rest   // []</div></pre></td></tr></table></figure>
-<p>（3）函数的返回值<br>JavaScript 的函数只能返回一个值，如果需要返回多个值，只能返回数组或对象。扩展运算符提供了解决这个问题的一种变通方法。<br>（4）字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(...&quot;hello&quot;);//h e l l o</div></pre></td></tr></table></figure>
-<p>（5）实现了 Iterator 接口的对象<br>任何 Iterator 接口的对象，都可以用扩展运算符转为真正的数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var nodeList = document.querySelectorAll(&apos;div&apos;);</div><div class="line">var array = [...nodeList];</div></pre></td></tr></table></figure>
-<p>（6）Map 和 Set 结构<br>扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符，比如 Map 结构。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let maps = new Map([[1,&apos;one&apos;],[2,&apos;two&apos;]]);</div><div class="line">let arr = [...maps.keys()];</div><div class="line">console.log(arr);</div></pre></td></tr></table></figure>
-<p>如果对没有 Iterator 接口的对象，使用扩展运算符，将会报错。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;a: 1, b: 2&#125;;</div><div class="line">let arr = [...obj]; // TypeError: Cannot spread non-iterable object</div></pre></td></tr></table></figure>
-<p>Array.from()<br>Array.from方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">let arraylike = &#123;</div><div class="line">	0:&apos;zore&apos;,</div><div class="line">	1:&apos;one&apos;,</div><div class="line">	2:&apos;two&apos;,</div><div class="line">	length:3</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(Array.from(arraylike));</div></pre></td></tr></table></figure>
-<p>Array.of()<br>Array.of方法将一组值，转换为数组。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(Array.of(2,3,4));</div></pre></td></tr></table></figure>
-<p>Array.of总是返回参数值组成的数组。如果没有参数，就返回一个空数组。</p>
-<p>数组实例的 find() 和 findIndex()<br>数组实例的find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let arrays = Array.of(1,2,3,4,5,6,7,8,9);</div><div class="line">console.log(arrays.find((n) =&gt; n &gt; 5));//6</div></pre></td></tr></table></figure>
-<p>数组实例的findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let arrays = Array.of(1,2,3,4,5,6,7,8,9);</div><div class="line">console.log(arrays.find((n) =&gt; n &gt; 5));//6</div><div class="line">console.log(arrays.findIndex((n) =&gt; n &gt; 5));//5</div></pre></td></tr></table></figure>
-<p>数组实例的fill()<br>fill方法使用给定值，填充一个数组。<br>fill方法还可以接受第二个和第三个参数，用于指定填充的起始位置和结束位置。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">let arrayss = Array.of(1,2,3,4,5,6,7,8,9);</div><div class="line">console.log(arrayss);</div><div class="line">console.log(arrayss.fill(1));全部填充为1</div><div class="line">console.log(arrayss.fill(2,5,7));//第5-7位填充为2</div><div class="line">//(9) [1, 2, 3, 4, 5, 6, 7, 8, 9]</div><div class="line">//(9) [1, 1, 1, 1, 1, 1, 1, 1, 1]</div><div class="line">//(9) [1, 1, 1, 1, 1, 2, 2, 1, 1]</div></pre></td></tr></table></figure>
-<p>数组实例的 entries()，keys() 和 values()<br>可以用for…of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">for(let index of [&apos;a&apos;,&apos;b&apos;].keys())&#123;</div><div class="line">	console.log(index);</div><div class="line">&#125;</div><div class="line">//for (let elem of [&apos;a&apos;, &apos;b&apos;].values())&#123;</div><div class="line">//  console.log(elem);</div><div class="line">//&#125;//chrome下无法使用</div><div class="line">for(let [index,elem] of [&apos;a&apos;,&apos;b&apos;].entries())&#123;</div><div class="line">	console.log(index+&apos;:&apos;+elem);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果不使用for…of循环，可以手动调用遍历器对象的next方法，进行遍历。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let letter = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];</div><div class="line">let entries = letter.entries();</div><div class="line">console.log(entries.next().value); // [0, &apos;a&apos;]</div><div class="line">console.log(entries.next().value); // [1, &apos;b&apos;]</div><div class="line">console.log(entries.next().value); // [2, &apos;c&apos;]</div></pre></td></tr></table></figure>
-<p>数组实例的 includes()<br>Array.prototype.includes方法返回一个布尔值，表示某个数组是否包含给定的值，与字符串的includes方法类似。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3].includes(2)     // true</div><div class="line">[1, 2, 3].includes(4)     // false</div><div class="line">[1, 2, NaN].includes(NaN) // true</div></pre></td></tr></table></figure>
-<p>该方法的第二个参数表示搜索的起始位置，默认为0。如果第二个参数为负数，则表示倒数的位置，如果这时它大于数组长度（比如第二个参数为-4，但数组长度为3），则会重置为从0开始。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3].includes(3, 3);  // false</div><div class="line">[1, 2, 3].includes(3, -1); // true</div></pre></td></tr></table></figure>
-<p>没有该方法之前，我们通常使用数组的indexOf方法，检查是否包含某个值<br>indexOf方法有两个缺点，一是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比较是否不等于-1，表达起来不够直观。二是，它内部使用严格相等运算符（===）进行判断，这会导致对NaN的误判。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[NaN].indexOf(NaN)</div><div class="line">// -1</div></pre></td></tr></table></figure>
-<p>includes使用的是不一样的判断算法，就没有这个问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[NaN].includes(NaN)</div><div class="line">// true</div></pre></td></tr></table></figure></p>
-<p>数组的空位<br>ES5 对空位的处理，已经很不一致了，大多数情况下会忽略空位。</p>
-<ul>
-<li>forEach(), filter(), every() 和some()都会跳过空位。</li>
-<li>map()会跳过空位，但会保留这个值</li>
-<li>join()和toString()会将空位视为undefined，而undefined和null会被处理成空字符串。</li>
+        <p>近期感觉自己在java方面有很多的不足需要补充，主要为两个方面，第一个是多线程，第二个是NIO。借阅了两本书来补充自己的知识，多线程使用的是高洪岩编著的《java多线程编程技术》另外一本是《netty实战》<br>本blog主要为学习《java多线程编程技术》的笔记，和部分自己的思考总结  </p>
+<h1 id="Chapter-01"><a href="#Chapter-01" class="headerlink" title="Chapter 01"></a>Chapter 01</h1><h2 id="1-Thread主要有两种实现方式"><a href="#1-Thread主要有两种实现方式" class="headerlink" title="1. Thread主要有两种实现方式"></a>1. Thread主要有两种实现方式</h2><ul>
+<li>继承Thread子类</li>
+<li>实现Runnable接口<br>主要区别为Thread也是实现了Runnable接口，如果只是在简单场合下使用，可以使用继承Thread，复写run方法即可，使用时只需要new XXX.start()即可，可以稍微简化代码量。<br>如果是复杂场景，建议使用第二种方式，毕竟java不支持多继承。  <h2 id="2-多次调用start出现java-lang-IllegalThreadStateException异常"><a href="#2-多次调用start出现java-lang-IllegalThreadStateException异常" class="headerlink" title="2. 多次调用start出现java.lang.IllegalThreadStateException异常"></a>2. 多次调用start出现java.lang.IllegalThreadStateException异常</h2>翻看Thread的start方法，我们可以看到如果threadStatus！=0 就会出现该异常，<br>threadStatus包括RUNNABLE, BLOCKED, WAITING, TIMED_WAITING or TERMINATED。<br>多次调用，线程状态已经改变，所以抛出异常。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// forEach方法</div><div class="line">[,&apos;a&apos;].forEach((x,i) =&gt; console.log(i)); // 1</div><div class="line"></div><div class="line">// filter方法</div><div class="line">[&apos;a&apos;,,&apos;b&apos;].filter(x =&gt; true) // [&apos;a&apos;,&apos;b&apos;]</div><div class="line"></div><div class="line">// every方法</div><div class="line">[,&apos;a&apos;].every(x =&gt; x===&apos;a&apos;) // true</div><div class="line"></div><div class="line">// some方法</div><div class="line">[,&apos;a&apos;].some(x =&gt; x !== &apos;a&apos;) // false</div><div class="line"></div><div class="line">// map方法</div><div class="line">[,&apos;a&apos;].map(x =&gt; 1) // [,1]</div><div class="line"></div><div class="line">// join方法</div><div class="line">[,&apos;a&apos;,undefined,null].join(&apos;#&apos;) // &quot;#a##&quot;</div><div class="line"></div><div class="line">// toString方法</div><div class="line">[,&apos;a&apos;,undefined,null].toString() // &quot;,a,,&quot;</div></pre></td></tr></table></figure>
-<p>ES6 则是明确将空位转为undefined。<br>Array.from方法会将数组的空位，转为undefined，也就是说，这个方法不会忽略空位。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Array.from([&apos;a&apos;,,&apos;b&apos;])</div><div class="line">// [ &quot;a&quot;, undefined, &quot;b&quot; ]</div></pre></td></tr></table></figure>
-<p>扩展运算符（…）也会将空位转为undefined。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[...[&apos;a&apos;,,&apos;b&apos;]]</div><div class="line">// [ &quot;a&quot;, undefined, &quot;b&quot; ]</div></pre></td></tr></table></figure>
-<p>copyWithin()会连空位一起拷贝。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[,&apos;a&apos;,&apos;b&apos;,,].copyWithin(2,0) // [,&quot;a&quot;,,&quot;a&quot;]</div></pre></td></tr></table></figure>
-<p>fill()会将空位视为正常的数组位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">new Array(3).fill(&apos;a&apos;) // [&quot;a&quot;,&quot;a&quot;,&quot;a&quot;]</div></pre></td></tr></table></figure></p>
-<p>for…of循环也会遍历空位。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let arr = [, ,];</div><div class="line">for (let i of arr) &#123;</div><div class="line">  console.log(1);</div><div class="line">&#125;</div><div class="line">// 1</div><div class="line">// 1</div></pre></td></tr></table></figure></p>
-<p>上面代码中，数组arr有两个空位，for…of并没有忽略它们。如果改成map方法遍历，空位是会跳过的。  </p>
-<p>entries()、keys()、values()、find()和findIndex()会将空位处理成undefined。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// entries()</div><div class="line">[...[,&apos;a&apos;].entries()] // [[0,undefined], [1,&quot;a&quot;]]</div><div class="line"></div><div class="line">// keys()</div><div class="line">[...[,&apos;a&apos;].keys()] // [0,1]</div><div class="line"></div><div class="line">// values()</div><div class="line">[...[,&apos;a&apos;].values()] // [undefined,&quot;a&quot;]</div><div class="line"></div><div class="line">// find()</div><div class="line">[,&apos;a&apos;].find(x =&gt; true) // undefined</div><div class="line"></div><div class="line">// findIndex()</div><div class="line">[,&apos;a&apos;].findIndex(x =&gt; true) // 0</div></pre></td></tr></table></figure>
-<p>由于空位的处理规则非常不统一，所以建议避免出现空位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> */                                                                                            </div><div class="line">public synchronized void start() &#123;                                                             </div><div class="line">    /**                                                                                        </div><div class="line">     * This method is not invoked for the main method thread or &quot;system&quot;                       </div><div class="line">     * group threads created/set up by the VM. Any new functionality added                     </div><div class="line">     * to this method in the future may have to also be added to the VM.                       </div><div class="line">     *                                                                                         </div><div class="line">     * A zero status value corresponds to state &quot;NEW&quot;.                                         </div><div class="line">     */                                                                                        </div><div class="line">    if (threadStatus != 0)                                                                     </div><div class="line">        throw new IllegalThreadStateException();                                               </div><div class="line">                                                                                               </div><div class="line">    /* Notify the group that this thread is about to be started                                </div><div class="line">     * so that it can be added to the group&apos;s list of threads                                  </div><div class="line">     * and the group&apos;s unstarted count can be decremented. */                                  </div><div class="line">    group.add(this);                                                                           </div><div class="line">                                                                                               </div><div class="line">    boolean started = false;                                                                   </div><div class="line">    try &#123;                                                                                      </div><div class="line">        start0();                                                                              </div><div class="line">        started = true;                                                                        </div><div class="line">    &#125; finally &#123;                                                                                </div><div class="line">        try &#123;                                                                                  </div><div class="line">            if (!started) &#123;                                                                    </div><div class="line">                group.threadStartFailed(this);                                                 </div><div class="line">            &#125;                                                                                  </div><div class="line">        &#125; catch (Throwable ignore) &#123;                                                           </div><div class="line">            /* do nothing. If start0 threw a Throwable then                                    </div><div class="line">              it will be passed up the call stack */                                           </div><div class="line">        &#125;                                                                                      </div><div class="line">    &#125;                                                                                          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以如下的调用方式是错误的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ThreadDemo02 td2 = new ThreadDemo02();</div><div class="line">td2.start();</div><div class="line">td2.start();</div></pre></td></tr></table></figure>
+<p>正确的使用方式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ThreadDemo01 td1 = new ThreadDemo01();</div><div class="line">new Thread(td1).start();</div><div class="line">new Thread(td1).start();</div></pre></td></tr></table></figure>
+<p><strong>在日常项目中多线程的使用中，尽量使用Runnable，而不是继承。使用继承任务和运行任务的机制混在一起了,实现接口Runnable 将任务从线程中分离出来</strong></p>
+<h2 id="3-自定义线程启动时可用添加名称"><a href="#3-自定义线程启动时可用添加名称" class="headerlink" title="3. 自定义线程启动时可用添加名称"></a>3. 自定义线程启动时可用添加名称</h2><p>线程启动时添加名称，这样在实际项目中查询问题时更加方便，在jvisualvm监控中可以监控是哪个线程占用的资源情况，从而进行优化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ThreadDemo01 td1 = new ThreadDemo01();</div><div class="line">new Thread(td1).start();</div><div class="line">new Thread(td1).start();</div><div class="line"></div><div class="line">new Thread(td1, &quot;td1-first&quot;).start();</div><div class="line">new Thread(td1, &quot;td1-second&quot;).start();</div><div class="line">//td1-first Thread is running~</div><div class="line">//td1-second Thread is running~</div></pre></td></tr></table></figure>
+<h2 id="4-实例变量与线程安全"><a href="#4-实例变量与线程安全" class="headerlink" title="4. 实例变量与线程安全"></a>4. 实例变量与线程安全</h2><h3 id="实例变量线程不共享"><a href="#实例变量线程不共享" class="headerlink" title="- 实例变量线程不共享"></a>- 实例变量线程不共享</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo03 extends Thread &#123;</div><div class="line">	private int count = 5;</div><div class="line">	</div><div class="line">	public void setThreadName(String name) &#123;</div><div class="line">		this.setName(name);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		super.run();</div><div class="line">		</div><div class="line">		while(count &gt;0) &#123;</div><div class="line">			count--;</div><div class="line">			System.out.println(this.getName()+&quot; &quot; + count);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ThreadDemo03 td3_1 = new ThreadDemo03();</div><div class="line">td3_1.setName(&quot;thread3-01&quot;);</div><div class="line">ThreadDemo03 td3_2 = new ThreadDemo03();</div><div class="line">td3_2.setName(&quot;thread3-02&quot;);</div><div class="line"></div><div class="line">td3_1.start();</div><div class="line">td3_2.start();</div></pre></td></tr></table></figure>
+<p>执行结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">thread3-01 4</div><div class="line">thread3-01 3</div><div class="line">thread3-01 2</div><div class="line">thread3-02 4</div><div class="line">thread3-02 3</div><div class="line">thread3-02 2</div><div class="line">thread3-02 1</div><div class="line">thread3-02 0</div><div class="line">thread3-01 1</div><div class="line">thread3-01 0</div></pre></td></tr></table></figure>
+<p>由上可以看出count为线程单独所有。</p>
+<ul>
+<li><h3 id="实例变量线程共享"><a href="#实例变量线程共享" class="headerlink" title="实例变量线程共享"></a>实例变量线程共享</h3>将上述代码稍作修改</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo04 extends Thread &#123;</div><div class="line">	private int count = 5;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		count--;</div><div class="line">		System.out.println(Thread.currentThread().getName() + &quot;--&quot; + count);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ThreadDemo04 td4 = new ThreadDemo04();</div><div class="line">new Thread(td4,&quot;A&quot;).start();</div><div class="line">new Thread(td4,&quot;B&quot;).start();</div><div class="line">new Thread(td4,&quot;C&quot;).start();</div><div class="line">new Thread(td4,&quot;D&quot;).start();</div><div class="line">new Thread(td4,&quot;E&quot;).start();</div></pre></td></tr></table></figure>
+<p>结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">E--2</div><div class="line">C--1</div><div class="line">B--3</div><div class="line">A--3</div><div class="line">D--0</div></pre></td></tr></table></figure>
+<p>出现了两个3，说明此时count不是线程安全的变量</p>
+<p>那么如何解决呢？<br>在run方法上加上synchronized即可，再次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">B--4</div><div class="line">D--3</div><div class="line">A--2</div><div class="line">C--1</div><div class="line">E--0</div></pre></td></tr></table></figure>
+<p>此时count的计算是递减，线程安全</p>
+<h2 id="5-isAlive-方法"><a href="#5-isAlive-方法" class="headerlink" title="5. isAlive()方法"></a>5. isAlive()方法</h2><p>isAlive()用于判断线程是否处于可用状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo05 extends Thread &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		System.out.println(&quot;Thread is running~&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ThreadDemo05 td5 = new ThreadDemo05();</div><div class="line">System.out.println(td5.isAlive());//false</div><div class="line">td5.start();</div><div class="line">System.out.println(td5.isAlive());	//true</div></pre></td></tr></table></figure>
+<h2 id="6-停止线程"><a href="#6-停止线程" class="headerlink" title="6. 停止线程"></a>6. 停止线程</h2><p>java中有三个方式停止线程<br>1、正常退出，run执行完成<br>2、使用stop方法强制终止线程（不推荐）<br>3、使用interrupt中断（推荐）  </p>
+<p>使用interrupt()方法停止线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Mythread thread = new Thread();</div><div class="line">thread.start();</div><div class="line">thread.sleep(500);</div><div class="line">thread.interrupt();</div></pre></td></tr></table></figure>
+<p>执行结果并没有中断，线程的run方法正常执行完成  </p>
+<ul>
+<li><strong>使用异常停止线程（建议使用，异常具有传播属性，可以往调用方抛出，更加利于程序控制）</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo06 extends Thread &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		super.run();</div><div class="line">		try &#123;</div><div class="line">			for (int i = 0; i &lt; 5000; i++) &#123;</div><div class="line">				if (this.isInterrupted()) &#123;</div><div class="line">					throw new InterruptedException(&quot;线程被终止&quot;);</div><div class="line">				&#125;</div><div class="line">				System.out.println(i);</div><div class="line">			&#125;</div><div class="line">		&#125; catch (InterruptedException e) &#123;</div><div class="line">			System.out.println(&quot;进入异常方法了，线程停止&quot;);</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ThreadDemo06 td6 = new ThreadDemo06();</div><div class="line">td6.start();</div><div class="line">td6.sleep(20);</div><div class="line">td6.interrupt();</div></pre></td></tr></table></figure>
+<p>执行结果如下，线程执行中途被终止<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1381</div><div class="line">进入异常方法了，线程停止</div><div class="line">java.lang.InterruptedException: 线程被终止</div><div class="line">	at java_multi_thread_programming.Chapter1.ThreadDemo06.run(ThreadDemo06.java:10)</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>线程在sleep()状态下停止</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo07 extends Thread &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		super.run();</div><div class="line">		try &#123;</div><div class="line">			sleep(20000);</div><div class="line">		&#125; catch (InterruptedException e) &#123;</div><div class="line">			System.out.println(&quot;线程在sleep状态被终止&quot;);</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ThreadDemo07 td7 = new ThreadDemo07();</div><div class="line">td7.start();</div><div class="line">td7.sleep(200);</div><div class="line">td7.interrupt();</div></pre></td></tr></table></figure>
+<p>执行结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">线程在sleep状态被终止</div><div class="line">java.lang.InterruptedException: sleep interrupted</div><div class="line">	at java.lang.Thread.sleep(Native Method)</div><div class="line">	at java_multi_thread_programming.Chapter1.ThreadDemo07.run(ThreadDemo07.java:8)</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>使用return终止线程</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo08 extends Thread &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		while(true) &#123;</div><div class="line">			if(this.isInterrupted()) &#123;</div><div class="line">				System.out.println(&quot;thread is stoped&quot;);</div><div class="line">				return;</div><div class="line">			&#125;</div><div class="line">			System.out.println(&quot;timer = &quot; + System.currentTimeMillis());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ThreadDemo08 td8 = new ThreadDemo08();</div><div class="line">td8.start();</div><div class="line">td8.sleep(20);</div><div class="line">td8.interrupt();</div></pre></td></tr></table></figure>
+<p>执行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">timer = 1523696594751</div><div class="line">timer = 1523696594751</div><div class="line">timer = 1523696594751</div><div class="line">thread is stoped</div></pre></td></tr></table></figure>
+<h2 id="7-线程的优先级"><a href="#7-线程的优先级" class="headerlink" title="7. 线程的优先级"></a>7. 线程的优先级</h2><p>线程可以划分优先级，优先级较高的线程得到的CPU资源较多。<br>在资源较为紧张的机器上，对外暴露接口时可以附上此值。不同的业务执行的权重不一致，较为关键的指令可以获取更多的系统资源，从而取得较快的运行效率。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo10 extends Thread &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		long startTime = System.currentTimeMillis();</div><div class="line">		</div><div class="line">		for (int i = 0; i &lt; 5000000; i++) &#123;</div><div class="line">			Random random = new Random();</div><div class="line">			random.nextInt();</div><div class="line">		&#125;</div><div class="line">		System.out.println(Thread.currentThread().getName()+&quot; excute time &quot;+ (System.currentTimeMillis() - startTime));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ThreadDemo11类名不同其他同上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ThreadDemo10 td10 = new ThreadDemo10();</div><div class="line">td10.setPriority(1);</div><div class="line">ThreadDemo11 td11 = new ThreadDemo11();</div><div class="line">td11.setPriority(10);</div><div class="line"></div><div class="line">td10.start();</div><div class="line">td11.start();</div></pre></td></tr></table></figure>
+<p>执行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Thread-1 excute time 470</div><div class="line">Thread-0 excute time 542</div></pre></td></tr></table></figure>
+<p>需要注意的是，并不是优先级高就一定先执行完成，具有一定的随机性，同时还与任务执行的时间有关，时间越长，差异越大。</p>
+<h2 id="8-守护线程"><a href="#8-守护线程" class="headerlink" title="8. 守护线程"></a>8. 守护线程</h2><p>在java中有两种线程，1、用户线程，2、守护线程。<br>我们常用的是用户线程<br>守护线程是一种特殊的线程，他具有“陪伴”的特征，当进程中不存在非守护进程了，则守护线程自动销毁。最常见的守护线程是GC，如果jvm中不存在非守护进程了，GC线程也就自动关闭。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo12 extends Thread &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		while (true) &#123;</div><div class="line">			System.out.println(&quot;deamonThread is run~&quot;);</div><div class="line">			try &#123;</div><div class="line">				Thread.sleep(1000);</div><div class="line">			&#125; catch (InterruptedException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ThreadDemo12 td11 = new ThreadDemo12();</div><div class="line">td11.setDaemon(true);</div><div class="line">td11.start();</div><div class="line"></div><div class="line">Thread.sleep(5000);</div><div class="line">System.out.println(&quot;mian out deamonThread will stop ~&quot;);</div></pre></td></tr></table></figure>
+<p>执行结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">deamonThread is run~</div><div class="line">deamonThread is run~</div><div class="line">deamonThread is run~</div><div class="line">deamonThread is run~</div><div class="line">deamonThread is run~</div><div class="line">mian out deamonThread will stop ~</div></pre></td></tr></table></figure>
+<p>当主线程main方法执行结束后，守护线程自动结束了</p>
+<h1 id="chapter02"><a href="#chapter02" class="headerlink" title="chapter02"></a>chapter02</h1><h2 id="1-synchronized同步方法"><a href="#1-synchronized同步方法" class="headerlink" title="1. synchronized同步方法"></a>1. synchronized同步方法</h2><p>“非线程安全”其实会在多个线程对同一个对象中的实例变量进行并发访问时发生，产生的后果就是就是“脏读”，渠道的数据其实是被修改过的。<br>“线程安全”就是以获得的实例变量的值是经过同步处理的，不会出现脏读现象。<br>第一章节中已经展示了脏读的实例。使用synchronized时，需要注意一下的内容。</p>
+<ol>
+<li><strong>当A线程调用anyObject对象加入synchronized关键字的X方法时，A线程就获得了X方法锁，更准确地将，是获得了对象的锁，所以其他线程必须等A线程执行完毕后才可以调用X方法，但是B线程可以随意调用其他的非synchronized同步方法。</strong></li>
+<li><strong>当A线程调用anyObject对象加入synchronized关键字的X方法时，A线程就获得了X方法所在的对象锁，所以其他线程必须等A线程执行完毕后才可以调用X方法，而B线程如果调用声明了synchronized关键字的非X方法时，必须等A线程将X方法执行完，也就是释放对象锁后才可以调用。</strong><br>所以，加了synchronized的方法，如果调用非常频繁，性能的损耗还是比较大。  <h2 id="2-加了synchronized的方法一定是线程安全的吗？"><a href="#2-加了synchronized的方法一定是线程安全的吗？" class="headerlink" title="2. 加了synchronized的方法一定是线程安全的吗？"></a>2. 加了synchronized的方法一定是线程安全的吗？</h2>定义一个含有成员变量的类</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class HasSelfPrivateNumPlus &#123;</div><div class="line">	private int i = 0;</div><div class="line"></div><div class="line">	public synchronized void setIBySyn(int i) throws InterruptedException &#123;</div><div class="line">		System.out.println(&quot;setIBySyn in &quot; + this.i);</div><div class="line">		Thread.sleep(10);</div><div class="line">		this.i = i + 1;</div><div class="line">		System.out.println(&quot;setIBySyn out &quot; + this.i);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setI(int i) &#123;</div><div class="line">		System.out.println(&quot;setI in &quot; + this.i);</div><div class="line">		this.i = i + 1;</div><div class="line">		System.out.println(&quot;setI out &quot; + this.i);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public int getI() &#123;</div><div class="line">		return i;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo15 extends Thread &#123;</div><div class="line">	private HasSelfPrivateNumPlus td17;</div><div class="line">	</div><div class="line">	public ThreadDemo15(HasSelfPrivateNumPlus td17) &#123;</div><div class="line">		this.td17 = td17;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		try &#123;</div><div class="line">			this.td17.setIBySyn(td17.getI());</div><div class="line">		&#125; catch (InterruptedException e) &#123;</div><div class="line">			// TODO Auto-generated catch block</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class ThreadDemo16 extends Thread &#123;</div><div class="line">	private HasSelfPrivateNumPlus td17;</div><div class="line"></div><div class="line">	public ThreadDemo16(HasSelfPrivateNumPlus td17) &#123;</div><div class="line">		this.td17 = td17;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		for (int i = 0; i &lt; 100; i++) &#123;</div><div class="line">			this.td17.setI(td17.getI());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">HasSelfPrivateNumPlus td17 = new HasSelfPrivateNumPlus();</div><div class="line">ThreadDemo15 td15 = new ThreadDemo15(td17);</div><div class="line">ThreadDemo16 td16 = new ThreadDemo16(td17);</div><div class="line">td15.start();</div><div class="line">td16.start();</div></pre></td></tr></table></figure>
+<p>执行完成结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">setI out 52</div><div class="line">setIBySyn in 0</div><div class="line">setI in 52</div><div class="line">...</div><div class="line">setI in 99</div><div class="line">setI out 100</div><div class="line">setIBySyn out 1</div></pre></td></tr></table></figure>
+<p>最终i的结果为1，所以单synchronized并不能保证是线程安全的。<br>有上面的结果可以看到，synchronized如果需要线程安全需要两个条件<br>第一：在方法上（或代码块）加synchronized关键字<br>第二：保证成员变量不会被非synchronized方法修改  </p>
+<h2 id="3-synchronized锁重入"><a href="#3-synchronized锁重入" class="headerlink" title="3.synchronized锁重入"></a>3.synchronized锁重入</h2><p>1、synchronized方法/块的内部调用本类的其他synchronized方法/块时，永远可以得到锁<br>2、可重入锁也支持在父子类继承中使用<br>如果不支持可重入，会造成死锁</p>
 
       
 
@@ -442,7 +284,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java后端</a>
         		</li>
       		
 		</ul>
@@ -451,16 +293,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/ES6-入门-数值、函数、数值/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/05/MQ随笔及RabbitMQ-安装使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MQ随笔及RabbitMQ 安装使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -480,188 +330,14 @@
 
 
 
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/19/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-19T02:58:56.716Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-wenyao&#39;s自留地" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/wenyao's自留地/">wenyao&#39;s自留地</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/19/wenyao's自留地/" class="archive-article-date">
-  	<time datetime="2017-06-19T08:14:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2017计划"><a href="#2017计划" class="headerlink" title="2017计划"></a>2017计划</h1><p>好久没写blog了，2017年开始准备记录生活和工作中的点滴吧，从今天开始写今年的第一篇blog，主要是列举今年上半年的计划。</p>
-<h2 id="下面列举下今年的计划"><a href="#下面列举下今年的计划" class="headerlink" title="下面列举下今年的计划"></a>下面列举下今年的计划</h2><hr>
-<ol>
-<li>熟练掌握VueJs的使用用</li>
-</ol>
-<p>VueJs自己编写一个小DEMO，开发一个完整的仿饿了么前端DEMO，并且放入crodova中，用真机模拟调试。</p>
-<hr>
-<ol>
-<li>熟练掌握微信小程序的开发</li>
-</ol>
-<p>熟悉小程序DEMO，并使用豆瓣API开发出一个仿豆瓣的应用，后期可考虑实现一个稍微复杂应用</p>
-<hr>
-<ol>
-<li>熟练掌握CSS中的流式布局</li>
-</ol>
-<p>考虑在新接手的移动项目中使用流式布局进行适配</p>
-<hr>
-<ol>
-<li>简单了解ES6语法</li>
-</ol>
-<p>学会简单的书写常用ES6语法</p>
-<hr>
-<ol>
-<li>更新自己的github<br>将项目全部更新到github上，并简单推广</li>
-</ol>
-<hr>
-<p>6.提高英语技能，达到能看懂简单文档水平，逐步达到看英文文档的标（暂时不做如此高要求，年度任务之一）</p>
-<hr>
-<p>7.提高自己的java后台开发能力，主要着力学习spring全家桶<br>spring core 、spring boot、spring Batch 、spring security</p>
-<hr>
-<p>8.着力搭建自己前后台分离框架，前台使用Vue，后台使用spring+mybatis</p>
-<hr>
-<h3 id="简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变"><a href="#简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变" class="headerlink" title="简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变"></a>简单列举到这里。希望自己能拿出最好的状态，应对工作的挑战，同时在家庭中做好角色转变</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/19/wenyao's自留地/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -684,8 +360,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
