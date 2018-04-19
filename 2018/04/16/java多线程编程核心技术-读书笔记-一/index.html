@@ -9,13 +9,14 @@
   <title>java多线程编程核心技术-读书笔记 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="近期感觉自己在java方面有很多的不足需要补充，主要为两个方面，第一个是多线程，第二个是NIO。借阅了两本书来补充自己的知识，多线程使用的是高洪岩编著的《java多线程编程技术》另外一本是《netty实战》本blog主要为学习《java多线程编程技术》的笔记，和部分自己的思考总结   Chapter 011. Thread主要有两种实现方式 继承Thread子类 实现Runnable接口主要区别为">
+<meta name="keywords" content="java后端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java多线程编程核心技术-读书笔记">
 <meta property="og:url" content="https://github.com/wenyaoxnxy/2018/04/16/java多线程编程核心技术-读书笔记-一/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
 <meta property="og:description" content="近期感觉自己在java方面有很多的不足需要补充，主要为两个方面，第一个是多线程，第二个是NIO。借阅了两本书来补充自己的知识，多线程使用的是高洪岩编著的《java多线程编程技术》另外一本是《netty实战》本blog主要为学习《java多线程编程技术》的笔记，和部分自己的思考总结   Chapter 011. Thread主要有两种实现方式 继承Thread子类 实现Runnable接口主要区别为">
 <meta property="og:image" content="http://wenyaoxnxy.github.io/img/deadlock.png">
-<meta property="og:updated_time" content="2018-04-16T13:58:02.985Z">
+<meta property="og:updated_time" content="2018-04-19T09:26:23.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程编程核心技术-读书笔记">
 <meta name="twitter:description" content="近期感觉自己在java方面有很多的不足需要补充，主要为两个方面，第一个是多线程，第二个是NIO。借阅了两本书来补充自己的知识，多线程使用的是高洪岩编著的《java多线程编程技术》另外一本是《netty实战》本blog主要为学习《java多线程编程技术》的笔记，和部分自己的思考总结   Chapter 011. Thread主要有两种实现方式 继承Thread子类 实现Runnable接口主要区别为">
@@ -184,7 +185,7 @@
 
         
         <a href="/2018/04/16/java多线程编程核心技术-读书笔记-一/" class="archive-article-date">
-  	<time datetime="2018-04-16T13:57:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
+  	<time datetime="2018-04-16T07:38:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
 </a>
         
       </header>
@@ -308,6 +309,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class VolatileNotAtom extends Thread &#123;</div><div class="line"></div><div class="line">	public static int count;</div><div class="line"></div><div class="line">	private synchronized static void addCount() &#123;</div><div class="line">		for (int i = 0; i &lt; 100; i++) &#123;</div><div class="line">			count++;</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;count = &quot; + count);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		addCount();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>方法二：使用原子操作提交i++</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class VolatileNotAtom extends Thread &#123;</div><div class="line"></div><div class="line">	volatile public static AtomicInteger count;</div><div class="line"></div><div class="line">	private static void addCount() &#123;</div><div class="line">		if (count == null) &#123;</div><div class="line">			synchronized (VolatileNotAtom.class) &#123;</div><div class="line">				if (count == null)</div><div class="line">					count = new AtomicInteger(0);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		for (int i = 0; i &lt; 100; i++) &#123;</div><div class="line">			count.incrementAndGet();</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;count = &quot; + count);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		addCount();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>8.线程中出现异常处理<br>1）UncaughtExceptionHandler<br>可以在线程上附属UncaughtExceptionHandler来进行异常的加工处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Runnable runnable = new Runnable() &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		throw new NullPointerException();</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Thread t = new Thread(runnable);</div><div class="line">t.setName(&quot;exception thread&quot;);</div><div class="line">t.setUncaughtExceptionHandler(new UncaughtExceptionHandler() &#123;</div><div class="line">	@Override</div><div class="line">	public void uncaughtException(Thread t, Throwable e) &#123;</div><div class="line">		System.out.println(&quot;线程：&quot; + Thread.currentThread().getName() + &quot; exception&quot;);</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line">t.start();</div><div class="line">Thread t2 = new Thread(runnable);</div><div class="line">t2.start();</div></pre></td></tr></table></figure>
+<p>执行结果为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Exception in thread &quot;Thread-1&quot; 线程：exception thread exception</div><div class="line">java.lang.NullPointerException</div><div class="line">	at java_multi_thread_programming.chapter1.ThreadExceptionHandeler$1.run(ThreadExceptionHandeler.java:10)</div><div class="line">	at java.lang.Thread.run(Unknown Source)</div><div class="line">java.lang.NullPointerException</div><div class="line">	at java_multi_thread_programming.chapter1.ThreadExceptionHandeler$1.run(ThreadExceptionHandeler.java:10)</div><div class="line">	at java.lang.Thread.run(Unknown Source)</div></pre></td></tr></table></figure>
+<p>2）设置默认处理器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Runnable runnable = new Runnable() &#123;</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		throw new NullPointerException();</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Thread baseThread = new Thread(runnable);</div><div class="line">baseThread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() &#123;</div><div class="line">	@Override</div><div class="line">	public void uncaughtException(Thread t, Throwable e) &#123;</div><div class="line">		System.out.println(Thread.currentThread().getName()+&quot; : 线程执行异常&quot;);</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line">Thread t1 = new Thread(baseThread);</div><div class="line">t1.start();</div><div class="line">Thread.sleep(500);</div><div class="line">Thread t2 = new Thread(baseThread);</div><div class="line">t2.start();</div></pre></td></tr></table></figure></p>
+<p>执行结果为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Thread-1 : 线程执行异常</div><div class="line">java.lang.NullPointerException</div><div class="line">	at java_multi_thread_programming.chapter1.DefaultThreadExceptionHandeler$1.run(DefaultThreadExceptionHandeler.java:11)</div><div class="line">	at java.lang.Thread.run(Unknown Source)</div><div class="line">	at java.lang.Thread.run(Unknown Source)</div><div class="line">Thread-2 : 线程执行异常</div><div class="line">java.lang.NullPointerException</div><div class="line">	at java_multi_thread_programming.chapter1.DefaultThreadExceptionHandeler$1.run(DefaultThreadExceptionHandeler.java:11)</div><div class="line">	at java.lang.Thread.run(Unknown Source)</div><div class="line">	at java.lang.Thread.run(Unknown Source)</div></pre></td></tr></table></figure>
       
 
       
@@ -315,6 +323,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -473,19 +492,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">activiti</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">activiti</a>
               </li>
              
               <li class="article-tag-list-item">

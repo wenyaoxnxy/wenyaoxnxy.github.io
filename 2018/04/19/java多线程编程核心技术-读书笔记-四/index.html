@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wenyaoxnxy">
-  <title>Archives: 2018/4 | wenyao&#39;s blog</title>
+  <title>java多线程编程核心技术-读书笔记-四 | wenyao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wenyao&#39;s blog">
-<meta property="og:url" content="https://github.com/wenyaoxnxy/archives/2018/04/index.html">
+  <meta name="description" content="chapter05 定时器Timer1.Timer使用Timer主要负责计划任务的功能，指定时间开始执行某一任务。执行计划的代码要放在TimerTask的子类中。 1、schedule(TimerTask task,Date time)执行日期，执行一次任务1)当前时间之后123456789101112131415public class TimerDemo01 &amp;#123;	private st">
+<meta name="keywords" content="java后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java多线程编程核心技术-读书笔记-四">
+<meta property="og:url" content="https://github.com/wenyaoxnxy/2018/04/19/java多线程编程核心技术-读书笔记-四/index.html">
 <meta property="og:site_name" content="wenyao&#39;s blog">
+<meta property="og:description" content="chapter05 定时器Timer1.Timer使用Timer主要负责计划任务的功能，指定时间开始执行某一任务。执行计划的代码要放在TimerTask的子类中。 1、schedule(TimerTask task,Date time)执行日期，执行一次任务1)当前时间之后123456789101112131415public class TimerDemo01 &amp;#123;	private st">
+<meta property="og:updated_time" content="2018-04-19T08:49:05.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wenyao&#39;s blog">
+<meta name="twitter:title" content="java多线程编程核心技术-读书笔记-四">
+<meta name="twitter:description" content="chapter05 定时器Timer1.Timer使用Timer主要负责计划任务的功能，指定时间开始执行某一任务。执行计划的代码要放在TimerTask的子类中。 1、schedule(TimerTask task,Date time)执行日期，执行一次任务1)当前时间之后123456789101112131415public class TimerDemo01 &amp;#123;	private st">
   
     <link rel="alternative" href="/atom.xml" title="wenyao&#39;s blog" type="application/atom+xml">
   
@@ -165,36 +170,57 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-java多线程编程核心技术-读书笔记-四" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      java多线程编程核心技术-读书笔记-四
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/19/java多线程编程核心技术-读书笔记-四/" class="archive-article-date">
+
+        
+        <a href="/2018/04/19/java多线程编程核心技术-读书笔记-四/" class="archive-article-date">
   	<time datetime="2018-04-19T08:47:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/19/java多线程编程核心技术-读书笔记-四/">java多线程编程核心技术-读书笔记-四</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="chapter05-定时器Timer"><a href="#chapter05-定时器Timer" class="headerlink" title="chapter05 定时器Timer"></a>chapter05 定时器Timer</h1><h2 id="1-Timer使用"><a href="#1-Timer使用" class="headerlink" title="1.Timer使用"></a>1.Timer使用</h2><p>Timer主要负责计划任务的功能，指定时间开始执行某一任务。<br>执行计划的代码要放在TimerTask的子类中。</p>
+<h3 id="1、schedule-TimerTask-task-Date-time-执行日期，执行一次任务"><a href="#1、schedule-TimerTask-task-Date-time-执行日期，执行一次任务" class="headerlink" title="1、schedule(TimerTask task,Date time)执行日期，执行一次任务"></a>1、schedule(TimerTask task,Date time)执行日期，执行一次任务</h3><h4 id="1-当前时间之后"><a href="#1-当前时间之后" class="headerlink" title="1)当前时间之后"></a>1)当前时间之后</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class TimerDemo01 &#123;</div><div class="line">	private static Timer timer = new Timer();</div><div class="line"></div><div class="line">	public static class MyTask extends TimerTask &#123;</div><div class="line">		@Override</div><div class="line">		public void run() &#123;</div><div class="line">			System.out.println(&quot;is running date : &quot; + new Date());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		MyTask mt = new MyTask();</div><div class="line">		timer.schedule(mt, new Date(System.currentTimeMillis() + 5000));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行结果，5s后出现syso内容</p>
+<h4 id="2）当前时间之前"><a href="#2）当前时间之前" class="headerlink" title="2）当前时间之前"></a>2）当前时间之前</h4><p>表现为立即执行    </p>
+<p><strong>schedule执行完成之后并未释放资源</strong><br>由源码可以看到，构造函数Timer是新启动一个线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Creates a new timer whose associated thread has the specified name.</div><div class="line"> * The associated thread does &lt;i&gt;not&lt;/i&gt;</div><div class="line"> * &#123;@linkplain Thread#setDaemon run as a daemon&#125;.</div><div class="line"> *</div><div class="line"> * @param name the name of the associated thread</div><div class="line"> * @throws NullPointerException if &#123;@code name&#125; is null</div><div class="line"> * @since 1.5</div><div class="line"> */</div><div class="line">public Timer(String name) &#123;</div><div class="line">    thread.setName(name);</div><div class="line">    thread.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同时提供了另外一个构造函数，是否以守护进程启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Creates a new timer whose associated thread has the specified name,</div><div class="line"> * and may be specified to</div><div class="line"> * &#123;@linkplain Thread#setDaemon run as a daemon&#125;.</div><div class="line"> *</div><div class="line"> * @param name the name of the associated thread</div><div class="line"> * @param isDaemon true if the associated thread should run as a daemon</div><div class="line"> * @throws NullPointerException if &#123;@code name&#125; is null</div><div class="line"> * @since 1.5</div><div class="line"> */</div><div class="line">public Timer(String name, boolean isDaemon) &#123;</div><div class="line">    thread.setName(name);</div><div class="line">    thread.setDaemon(isDaemon);</div><div class="line">    thread.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class TimerDemo01 &#123;</div><div class="line">	private static Timer timer = new Timer(true);</div><div class="line"></div><div class="line">	public static class MyTask extends TimerTask &#123;</div><div class="line">		@Override</div><div class="line">		public void run() &#123;</div><div class="line">			System.out.println(&quot;is running date : &quot; + new Date());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		MyTask mt = new MyTask();</div><div class="line">		timer.schedule(mt, new Date(System.currentTimeMillis() + 1000));</div><div class="line">		try &#123;</div><div class="line">			Thread.sleep(3000);</div><div class="line">		&#125; catch (InterruptedException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>以守护线程进行启动一定要保证主线程是在子线程执行完成之后才执行</strong><br>可以使用sleep…</p>
+<h4 id="3）执行多个Task"><a href="#3）执行多个Task" class="headerlink" title="3）执行多个Task"></a>3）执行多个Task</h4><p><strong>执行多个task需要注意，如果第一个Task执行时间超过第二个task的开始，那么第二个task的开始将会延后。Task是被放入队列中，逐个执行的。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class TimerDemo01 &#123;</div><div class="line">	private static Timer timer = new Timer();</div><div class="line"></div><div class="line">	public static class MyTask1 extends TimerTask &#123;</div><div class="line">		@Override</div><div class="line">		public void run() &#123;</div><div class="line">			System.out.println(&quot;MyTask1 is running date : &quot; + new Date());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static class MyTask2 extends TimerTask &#123;</div><div class="line">		@Override</div><div class="line">		public void run() &#123;</div><div class="line">			System.out.println(&quot;MyTask2 is running date : &quot; + new Date());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		MyTask1 mt1 = new MyTask1();</div><div class="line">		MyTask2 mt2 = new MyTask2();</div><div class="line">		timer.schedule(mt1, new Date(System.currentTimeMillis() + 1000));</div><div class="line">		timer.schedule(mt2, new Date(System.currentTimeMillis() + 2000));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-schedule-TimerTask-task-Date-firstTime-long-period"><a href="#2-schedule-TimerTask-task-Date-firstTime-long-period" class="headerlink" title="2.schedule(TimerTask task,Date firstTime,long period)"></a>2.schedule(TimerTask task,Date firstTime,long period)</h3><p>指定的日期之后，按指定的间隔周期性地无线循环地执行某一任务</p>
+<h4 id="1）当前时间之后执行"><a href="#1）当前时间之后执行" class="headerlink" title="1）当前时间之后执行"></a>1）当前时间之后执行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class TimerDemo2 &#123;</div><div class="line">	private static Timer timer = new Timer();</div><div class="line"></div><div class="line">	public static class MyTask1 extends TimerTask &#123;</div><div class="line">		@Override</div><div class="line">		public void run() &#123;</div><div class="line">			System.out.println(&quot;MyTask1 is running date : &quot; + new Date());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		MyTask1 mt1 = new MyTask1();</div><div class="line">		timer.schedule(mt1, new Date(System.currentTimeMillis() + 1000),3000L);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2）当前时间之前执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class TimerDemo2 &#123;</div><div class="line">	private static Timer timer = new Timer();</div><div class="line"></div><div class="line">	public static class MyTask1 extends TimerTask &#123;</div><div class="line">		@Override</div><div class="line">		public void run() &#123;</div><div class="line">			System.out.println(&quot;MyTask1 is running date : &quot; + new Date());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		MyTask1 mt1 = new MyTask1();</div><div class="line">		timer.schedule(mt1, new Date(System.currentTimeMillis() - 10000),3000L);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>立即执行一次，后续按照周期执行<br>3）任务被延时<br>如果任务执行时间超过时间间隔，将会执行完成后再执行，依次排队执行。</p>
+<h3 id="3-TimerTask的cancel-方法"><a href="#3-TimerTask的cancel-方法" class="headerlink" title="3.TimerTask的cancel()方法"></a>3.TimerTask的cancel()方法</h3><p>将自身从任务队列中清除，其他的任务不受影响。</p>
+<h3 id="4-Timer的cancel-方法"><a href="#4-Timer的cancel-方法" class="headerlink" title="4. Timer的cancel()方法"></a>4. Timer的cancel()方法</h3><p>Timer中的cancel()是将队列中的所有任务清空。</p>
+<h3 id="5-Timer的chancel-问题"><a href="#5-Timer的chancel-问题" class="headerlink" title="5.Timer的chancel()问题"></a>5.Timer的chancel()问题</h3><p>Timer的chancel()方法有时不一定会停止执行计划任务，而是正常执行。这是应为Timer类中的cancel()方法有时并没有争抢到queue锁，所以TimerTask类中的任务继续正常执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class TimerDemo2 &#123;</div><div class="line">	static int i = 0;</div><div class="line"></div><div class="line">	public static class MyTask1 extends TimerTask &#123;</div><div class="line">		@Override</div><div class="line">		public void run() &#123;</div><div class="line">			System.out.println(i + &quot;MyTask1 is running date : &quot; + new Date());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		while (true) &#123;</div><div class="line">			i++;</div><div class="line">			Timer timer = new Timer();</div><div class="line">			MyTask1 mt1 = new MyTask1();</div><div class="line">			timer.schedule(mt1, new Date(System.currentTimeMillis() + 100), 300L);</div><div class="line">			timer.cancel();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6-schedule-TimerTask-task-long-delay"><a href="#6-schedule-TimerTask-task-long-delay" class="headerlink" title="6.schedule(TimerTask task,long delay)"></a>6.schedule(TimerTask task,long delay)</h3><p>当前时间为基础，延迟delay毫秒数</p>
+<h3 id="7-schedule-TimerTask-task-long-delay-long-period"><a href="#7-schedule-TimerTask-task-long-delay-long-period" class="headerlink" title="7.schedule(TimerTask task,long delay,long period)"></a>7.schedule(TimerTask task,long delay,long period)</h3><p>当前时间基础，延迟delay毫秒后，period毫秒周期执行  </p>
+<h3 id="8-scheduleAtFixedRate-Timer-task-Date-firstTime-long-period"><a href="#8-scheduleAtFixedRate-Timer-task-Date-firstTime-long-period" class="headerlink" title="8.scheduleAtFixedRate(Timer task,Date firstTime,long period)"></a>8.scheduleAtFixedRate(Timer task,Date firstTime,long period)</h3><p>schedule和scheduleAtFixedRate都会按照顺序执行，不需要考虑线程安全问题。<br>schedule和scheduleAtFixedRate 主要区别在于不延时的情况<br><strong>schedule以上一次任务开始时间作为参考时间<br>scheduleAtFixedRate  以上一次任务结束时间作为参考时间（如果不被延误）</strong><br>延误的情况两者没有区别，都是以上次结束的时间来计算</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -206,133 +232,55 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/19/java多线程编程核心技术-读书笔记-三/" class="archive-article-date">
-  	<time datetime="2018-04-19T07:23:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/19/java多线程编程核心技术-读书笔记-三/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java多线程编程核心技术-读书笔记-三</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/19/java多线程编程核心技术-读书笔记-三/">java多线程编程核心技术-读书笔记-三</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/19/java多线程编程核心技术-读书笔记-二/" class="archive-article-date">
-  	<time datetime="2018-04-19T07:21:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/19/java多线程编程核心技术-读书笔记-二/">java多线程编程核心技术-读书笔记(二)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/16/java多线程编程核心技术-读书笔记-一/" class="archive-article-date">
-  	<time datetime="2018-04-16T07:38:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/16/java多线程编程核心技术-读书笔记-一/">java多线程编程核心技术-读书笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -355,8 +303,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
